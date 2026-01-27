@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta name="description" content="Black Organization is a future-focused collective building technology, music, design, and systems without permission.">
+<meta name="keywords" content="Black Organization, technology, music, design, innovation">
+<meta name="author" content="CT Black">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Organization</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --bg-soft: #121212;
+      --accent: #00ffd5;
+      --text: #eaeaea;
+      --muted: #9a9a9a;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #000000, #0b0b0b);
+  animation: fadeIn 1.2s ease;
+}
+
+header h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+header p {
+  max-width: 700px;
+  margin: 20px auto 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: var(--bg-soft);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+  display: none;
+  animation: slideUp 0.8s ease;
+}
+
+section.active {
+  display: block;
+}
+
+section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--bg-soft);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #1f1f1f;
+  transition: transform 0.3s, border 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent);
+}
+
+footer {
+  background: #050505;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+footer span {
+  color: var(--accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* LOADER */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 2.5s;
+}
+
+.loader-text {
+  color: var(--accent);
+  font-size: 2rem;
+  letter-spacing: 3px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-text">BLACK ORGANIZATION</div>
+  </div>  <header>
+    <h1>BLACK ORGANIZATION</h1>
+    <p>
+      Black Organization is not just a brand — it is a movement.
+      A future-focused collective built on creativity, technology,
+      independence, and the belief that greatness can rise from nothing.
+    </p>
+  </header>  <nav>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('vision')">Vision</a>
+    <a onclick="showSection('departments')">Departments</a>
+    <a onclick="showSection('philosophy')">Philosophy</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>  <section id="about" class="active">
+    <h2>About Black Organization</h2>
+    <p>
+      Black Organization was founded with a simple but dangerous idea:
+      to build systems, art, and technology that do not depend on approval.
+      We exist to challenge limits, rewrite rules, and create platforms
+      that empower the next generation of thinkers, creators, and builders.
+    </p>
+    <p>
+      We operate at the intersection of music, software, design,
+      storytelling, and innovation. Where others wait for permission,
+      we execute. Where others follow trends, we build foundations.
+    </p>
+  </section>  <section id="vision">
+    <h2>Our Vision</h2>
+    <p>
+      To create a world where Black minds are not consumers of systems,
+      but architects of them. A world where talent is not wasted,
+      creativity is not boxed, and innovation is not gatekept.
+    </p><div class="card-grid">
+  <div class="card">
+    <h3>Global Impact</h3>
+    <p>
+      We aim to build tools and ideas that scale beyond borders,
+      cultures, and limitations.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Creative Freedom</h3>
+    <p>
+      Art, code, music, and design should never be restricted.
+      Freedom is our default setting.
+    </p>
+  </div>
+  <div class="card">
+    <h3>Legacy Thinking</h3>
+    <p>
+      We do not chase short-term hype. Everything we build
+      is meant to outlive us.
+    </p>
+  </div>
+</div>
+
+  </section>  <section id="departments">
+    <h2>Departments</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Black Tech</h3>
+        <p>
+          Software, apps, systems, and experimental technology
+          designed to solve real problems.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Black Music</h3>
+        <p>
+          Sound as power. Music as identity. Stories told through rhythm,
+          pain, hope, and vision.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Black Design</h3>
+        <p>
+          Visual language for the future — fashion, graphics,
+          branding, and digital experiences.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Black Research</h3>
+        <p>
+          Deep thinking, philosophy, experimentation,
+          and long-term problem solving.
+        </p>
+      </div>
+    </div>
+  </section>  <section id="philosophy">
+    <h2>Our Philosophy</h2>
+    <p>
+      We believe discipline beats talent when talent sleeps.
+      We believe consistency creates miracles.
+      We believe systems matter more than motivation.
+    </p>
+    <p>
+      Black Organization stands for self-education, self-reliance,
+      and silent execution. No noise. No excuses. Just results.
+    </p>
+  </section>  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      This is only the beginning. Partnerships, collaborations,
+      and future projects are loading.
+    </p>
+    <p>
+      Email: <strong>blackorganizationctblack@gmail.com</strong><br />
+      Status: <strong>Building. Expanding. Evolving.</strong>
+    </p>
+  </section>  <footer>
+    <p>
+      © 2026 <span>Black Organization</span> — Built from vision, not permission.
+    </p>
+  </footer>  <!-- BRAND SOUND -->  <audio id="brandSound" preload="auto">
+    <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAA==" type="audio/mp3">
+  </audio>  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      playSound();
+    }
+
+    function playSound() {
+      const sound = document.getElementById('brandSound');
+      sound.volume = 0.2;
+      sound.currentTime = 0;
+      sound.play().catch(()=>{});
+    }
+
+    // Hide loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 3000);
+    });
+
+    // PWA minimal manifest
+    const manifest = {
+      name: "Black Organization",
+      short_name: "BlackOrg",
+      start_url: ".",
+      display: "standalone",
+      background_color: "#000000",
+      theme_color: "#00ffd5"
+    };
+
+    const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+    const manifestURL = URL.createObjectURL(blob);
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = manifestURL;
+    document.head.appendChild(link);
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    }
+  </script></body>
+</html><!
