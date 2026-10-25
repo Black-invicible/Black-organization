@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PDF & DOC Archive — Black Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a09;--wall:#141412;--wall2:#1b1a17;--gold:#c9a227;--gold-light:#e8cc7c;--ivory:#f5f3ef;--grey:#8f8a7e;--line:rgba(245,243,239,.12);--line2:rgba(245,243,239,.24)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--black);color:var(--ivory);font-family:Inter,Arial,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,9,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{max-width:1320px;margin:auto;padding:17px 28px;display:flex;align-items:center}.brand{font:600 20px Fraunces,serif}.brand span{color:var(--gold-light);font-style:italic}.brand small{display:block;font:600 8px JetBrains Mono,monospace;letter-spacing:.15em;color:var(--grey)}.navlinks{margin-left:auto;display:flex;gap:25px}.navlinks a{font:600 10px JetBrains Mono,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}.navtoggle{display:none;background:none;border:0;color:#fff;font-size:22px;margin-left:auto}
+.hero,.app,footer{max-width:1320px;margin:auto;padding-left:28px;padding-right:28px}.hero{padding-top:70px;padding-bottom:48px;display:grid;grid-template-columns:1.4fr .8fr;gap:50px;align-items:end}.eyebrow,.mono{font:600 10px JetBrains Mono,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light)}h1,h2,h3{font-family:Fraunces,serif;font-weight:600;line-height:1.06}.hero h1{font-size:clamp(45px,6vw,76px);margin:16px 0}.hero h1 em{color:var(--gold-light)}.hero p{max-width:650px;color:#c7c2b7;line-height:1.8;font-size:15px}.hero-card{border:1px solid var(--line2);padding:25px;background:linear-gradient(145deg,#151512,#0d0d0c)}.hero-card .big{font:600 48px Fraunces,serif;color:var(--gold-light)}
+.app{padding-bottom:80px}.toolbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.search{flex:1;min-width:230px}.search input{width:100%;background:var(--wall);border:1px solid var(--line2);color:#fff;padding:12px 14px;outline:0}.select{background:var(--wall);color:#fff;border:1px solid var(--line2);padding:11px}.btn{border:1px solid var(--gold);background:var(--gold);color:var(--black);padding:11px 17px;font:600 10px JetBrains Mono,monospace;letter-spacing:.1em;text-transform:uppercase}input[type=file]{display:none}
+.dropzone{margin:24px 0;border:1.5px dashed var(--line2);background:rgba(201,162,39,.025);padding:34px;text-align:center}.dropzone.drag{border-color:var(--gold);background:rgba(201,162,39,.08)}.dropzone .plus{font:500 42px Fraunces,serif;color:var(--gold-light)}.dropzone h3{font-size:22px;margin:8px}.dropzone p{font-size:12px;color:var(--grey);line-height:1.6}.dropzone .btn{margin-top:14px}.stats{display:flex;gap:30px;margin:24px 0;flex-wrap:wrap}.stat{border-left:1px solid var(--gold);padding-left:13px}.stat strong{font:600 24px Fraunces,serif;color:var(--gold-light)}.stat span{display:block;font:600 8px JetBrains Mono,monospace;color:var(--grey);letter-spacing:.12em;text-transform:uppercase}
+.docs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.doc{background:var(--wall);border:1px solid var(--line);transition:.2s}.doc:hover{border-color:rgba(201,162,39,.7);transform:translateY(-2px)}.thumb{height:190px;background:#10100e;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}.pdfpage{width:105px;height:142px;background:#f8f7f2;color:#111;box-shadow:0 7px 20px #0008;padding:12px}.pdfpage b{font:700 13px Fraunces,serif}.pdfpage i,.pdfpage span{display:block;height:3px;background:#d4c8a4;margin-top:9px}.pdfpage span{height:2px;background:#c7c3b9;margin-top:7px}.doctype{font:700 36px JetBrains Mono,monospace;color:var(--gold-light);border:1px solid var(--gold);padding:20px 12px}.docbody{padding:14px}.docname{font:600 14px Fraunces,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font:9px JetBrains Mono,monospace;color:var(--grey);margin-top:6px;text-transform:uppercase}.docactions{display:flex;gap:7px;margin-top:13px}.docactions button{flex:1;padding:8px;background:transparent;color:var(--ivory);border:1px solid var(--line2);font-size:9px}.empty{border:1px dashed var(--line2);padding:65px 20px;text-align:center;color:var(--grey);grid-column:1/-1}.empty strong{display:block;font:24px Fraunces,serif;color:#c7c2b7;margin-bottom:8px}
+.viewer{display:none;position:fixed;inset:0;background:rgba(5,5,4,.97);z-index:100;flex-direction:column}.viewer.open{display:flex}.viewerbar{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:15px}.viewerbar .title{font:600 16px Fraunces,serif;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.viewerbar button{background:transparent;color:#fff;border:1px solid var(--line2);padding:8px 13px;font:10px JetBrains Mono,monospace}.viewerbody{flex:1;min-height:0;display:flex;justify-content:center;align-items:center;padding:18px}.viewerbody iframe{width:100%;height:100%;border:1px solid var(--line)}.docpreview{width:min(900px,95%);height:100%;overflow:auto;background:#fff;color:#222;padding:60px;line-height:1.7}.docpreview img{max-width:100%}.viewer-loading{color:var(--gold-light);font:12px JetBrains Mono,monospace}.toast{position:fixed;right:20px;bottom:20px;background:#171714;border:1px solid var(--gold);color:#fff;padding:12px 17px;z-index:200;display:none}
+footer{border-top:1px solid var(--line);padding-top:40px;padding-bottom:40px;color:var(--grey);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer strong{color:var(--ivory);font:17px Fraunces,serif}footer span{font:9px JetBrains Mono,monospace;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:1050px){.docs{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}}@media(max-width:760px){.navlinks{position:fixed;inset:61px 0 0;background:#0a0a09;display:flex;flex-direction:column;padding:35px;transform:translateX(100%);transition:.25s}.navlinks.open{transform:translateX(0)}.navtoggle{display:block}.docs{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.docs{grid-template-columns:1fr}.hero,.app,footer{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><a class="brand" href="#">PDF & DOC <span>Archive</span><small>BLACK ORGANIZATION</small></a><div class="navlinks" id="navlinks"><a href="#library">Library</a><a href="#upload">Upload</a></div><button class="navtoggle" onclick="toggleNav()">☰</button></nav></header>
+
+<section class="hero"><div><div class="eyebrow">A DOCUMENT ARCHIVE BY BLACK ORGANIZATION</div><h1>Keep every document<br><em>within reach.</em></h1><p>Store PDF and Word documents directly in this browser-based archive, organize them, search them, and preview supported files without leaving the workspace.</p></div><div class="hero-card"><div class="mono">LOCAL DOCUMENT VAULT</div><div class="big" id="heroCount">0</div><p>documents currently stored in this browser.</p></div></section>
+
+<main class="app" id="library">
+<div class="toolbar"><div class="search"><input id="search" placeholder="Search documents..." oninput="render()"></div><select class="select" id="typeFilter" onchange="render()"><option value="all">All types</option><option value="pdf">PDF</option><option value="docx">DOCX</option><option value="doc">DOC</option><option value="html">HTML</option></select><select class="select" id="sort" onchange="render()"><option value="new">Newest</option><option value="old">Oldest</option><option value="az">A–Z</option><option value="size">Largest</option></select><button class="btn" onclick="fileInput.click()">+ Upload files</button><input id="fileInput" type="file" accept=".pdf,.doc,.docx,.html,.htm" multiple></div>
+<div class="stats"><div class="stat"><strong id="count">0</strong><span>Documents</span></div><div class="stat"><strong id="pdfCount">0</strong><span>PDF Files</span></div><div class="stat"><strong id="docCount">0</strong><span>Word Files</span></div><div class="stat"><strong id="sizeCount">0 MB</strong><span>Stored Size</span></div></div>
+<section class="dropzone" id="upload"><div class="plus">+</div><h3>Drop documents here</h3><p>PDF, DOC, DOCX, HTML and HTM files are accepted. Multiple files can be added at once.<br>Files are stored locally in this browser using IndexedDB.</p><button class="btn" onclick="fileInput.click()">Choose documents</button></section>
+<div class="docs" id="docs"></div>
+</main>
+<footer><div><strong>PDF & DOC Archive</strong><br><span>Document workspace · Black Organization</span></div><span>Files stay in this browser unless you export or download them.</span></footer>
+
+<div class="viewer" id="viewer"><div class="viewerbar"><div class="title" id="viewerTitle"></div><button onclick="downloadCurrent()">DOWNLOAD</button><button onclick="closeViewer()">CLOSE ×</button></div><div class="viewerbody" id="viewerBody"></div></div><div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script>
+const DB="black_org_pdf_doc_vault",STORE="documents";let db,currentDoc,currentUrl;
+function initDB(){return new Promise((resolve,reject)=>{let r=indexedDB.open(DB,1);r.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains(STORE))e.target.result.createObjectStore(STORE,{keyPath:"id",autoIncrement:true})};r.onsuccess=e=>{db=e.target.result;resolve()};r.onerror=()=>reject(r.error)})}
+function store(mode){return db.transaction(STORE,mode).objectStore(STORE)}
+function allDocs(){return new Promise((r,j)=>{let q=store("readonly").getAll();q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)})}
+function getDoc(id){return new Promise((r,j)=>{let q=store("readonly").get(Number(id));q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)})}
+function addDoc(f){return new Promise((r,j)=>{let ext=f.name.split(".").pop().toLowerCase(),type=ext==="pdf"?"pdf":ext==="doc"?"doc":(ext==="html"||ext==="htm")?"html":"docx";let q=store("readwrite").add({name:f.name,type,size:f.size,created:Date.now(),blob:f});q.onsuccess=()=>r();q.onerror=()=>j(q.error)})}
+function delDoc(id){return new Promise((r,j)=>{let q=store("readwrite").delete(Number(id));q.onsuccess=()=>r();q.onerror=()=>j(q.error)})}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function size(n){return n<1024?n+" B":n<1048576?(n/1024).toFixed(1)+" KB":(n/1048576).toFixed(2)+" MB"}
+function icon(t){return t==="pdf"?'<div class="pdfpage"><b>PDF</b><i></i><span></span><span></span><span></span></div>':`<div class="doctype">${t==="html"?"HTML":t.toUpperCase()}</div>`}
+async function render(){let q=search.value.toLowerCase(),f=typeFilter.value,s=sort.value,a=(await allDocs()).filter(d=>(!q||d.name.toLowerCase().includes(q))&&(f==="all"||d.type===f));a.sort((x,y)=>s==="az"?x.name.localeCompare(y.name):s==="old"?x.created-y.created:s==="size"?y.size-x.size:y.created-x.created);let all=await allDocs();count.textContent=all.length;heroCount.textContent=all.length;pdfCount.textContent=all.filter(x=>x.type==="pdf").length;docCount.textContent=all.filter(x=>x.type!=="pdf").length;sizeCount.textContent=size(all.reduce((n,x)=>n+x.size,0));docs.innerHTML=a.length?a.map(d=>`<article class="doc"><div class="thumb">${icon(d.type)}</div><div class="docbody"><div class="docname" title="${esc(d.name)}">${esc(d.name)}</div><div class="meta">${d.type.toUpperCase()} · ${size(d.size)}</div><div class="docactions"><button onclick="preview(${d.id})">PREVIEW</button><button onclick="download(${d.id})">DOWNLOAD</button><button onclick="removeDoc(${d.id})">DELETE</button></div></div></article>`).join(""):'<div class="empty"><strong>Your document archive is empty.</strong>Upload PDF, DOC, DOCX or HTML files to begin building the library.</div>'}
+async function handleFiles(fs){for(let f of fs){let e=f.name.split(".").pop().toLowerCase();if(!["pdf","doc","docx","html","htm"].includes(e)){toast("Unsupported: "+f.name);continue}try{await addDoc(f)}catch(x){toast("Could not store "+f.name)}}await render();toast("Documents added")}
+async function preview(id){let d=await getDoc(id);if(!d)return;currentDoc=d;viewerTitle.textContent=d.name;viewer.classList.add("open");viewerBody.innerHTML='<div class="viewer-loading">OPENING DOCUMENT…</div>';if(currentUrl)URL.revokeObjectURL(currentUrl);currentUrl=URL.createObjectURL(d.blob);if(d.type==="pdf")viewerBody.innerHTML=`<iframe src="${currentUrl}" title="PDF preview"></iframe>`;
+else if(d.type==="html"){try{const text=await d.blob.text();const iframe=document.createElement("iframe");iframe.title="HTML preview";iframe.style.cssText="width:100%;height:100%;border:1px solid var(--line);background:#fff";viewerBody.innerHTML="";viewerBody.appendChild(iframe);const doc=iframe.contentDocument||iframe.contentWindow.document;doc.open();doc.write(text);doc.close()}catch(e){viewerBody.innerHTML='<div class="viewer-loading">HTML preview failed. Use DOWNLOAD to open the original file.</div>'}}
+else if(d.type==="docx"){try{let r=await mammoth.convertToHtml({arrayBuffer:await d.blob.arrayBuffer()});viewerBody.innerHTML='<div class="docpreview">'+r.value+'</div>'}catch(e){viewerBody.innerHTML='<div class="viewer-loading">DOCX preview failed. Use DOWNLOAD to open the original file.</div>'}}
+else viewerBody.innerHTML='<div class="viewer-loading">Legacy DOC preview depends on external document software. Use DOWNLOAD to open the original file.</div>'}
+function closeViewer(){viewer.classList.remove("open");viewerBody.innerHTML="";if(currentUrl)URL.revokeObjectURL(currentUrl);currentUrl=null;currentDoc=null}
+async function download(id){let d=await getDoc(id),u=URL.createObjectURL(d.blob),a=document.createElement("a");a.href=u;a.download=d.name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function downloadCurrent(){if(currentDoc)download(currentDoc.id)}
+async function removeDoc(id){let d=await getDoc(id);if(confirm('Delete "'+d.name+'"?')){await delDoc(id);await render();toast("Document deleted")}}
+function toast(t){toastEl.textContent=t;toastEl.style.display="block";setTimeout(()=>toastEl.style.display="none",1800)}
+function toggleNav(){navlinks.classList.toggle("open")}
+const fileInput=document.getElementById("fileInput"),drop=document.getElementById("upload"),toastEl=document.getElementById("toast");
+fileInput.onchange=e=>handleFiles([...e.target.files]);["dragenter","dragover"].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.add("drag")}));["dragleave","drop"].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.classList.remove("drag")}));drop.ondrop=e=>handleFiles([...e.dataTransfer.files]);document.onkeydown=e=>{if(e.key==="Escape")closeViewer()};
+(async()=>{try{await initDB();await render()}catch(e){console.error(e);toast("Local storage is unavailable in this browser")}})();
+</script>
+
+<script>
+(function () {
+  if (window.__BLACK_ORG_AI_EMBED__) return;
+  window.__BLACK_ORG_AI_EMBED__ = true;
+  const CONFIG = { botUrl: 'https://black-organization.ai/bot', position: 'bottom-right', theme: 'black-gold', organization: 'BLACK ORGANIZATION' };
+  const style = document.createElement('style');
+  style.textContent = `
+    #black-ai-bubble{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border-radius:50%;background:#0a0a0a;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,.28);} #black-ai-bubble:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 38px rgba(212,175,55,.38);} #black-ai-bubble img{width:36px;height:36px;object-fit:contain;display:block;} #black-ai-frame-wrap{position:fixed;right:24px;bottom:100px;width:420px;height:640px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);background:#fff;border:1px solid #D4AF37;border-radius:20px;overflow:hidden;display:none;z-index:2147483647;box-shadow:0 30px 70px rgba(0,0,0,.25);} #black-ai-frame-wrap.open{display:block;animation:blackSlide .28s ease;} #black-ai-frame{width:100%;height:100%;border:0;} @keyframes blackSlide{from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);}} #black-ai-header{height:46px;background:#0a0a0a;color:#D4AF37;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;} #black-ai-close{cursor:pointer;font-size:22px;line-height:1;} @media(max-width:480px){#black-ai-frame-wrap{width:100vw;height:100vh;right:0;left:0;bottom:0;border-radius:0;max-width:100vw;max-height:100vh;}}
+  `;
+  document.head.appendChild(style);
+  const bubble = document.createElement('div');
+  bubble.id = 'black-ai-bubble';
+  bubble.innerHTML = '<img src="https://cdn.fbsbx.com/v/t65.102178-21/774265991_1532109481443121_9009376856195502772_n.jpg/black_logo_05_app_icon.png" alt="BLACK AI"><span style="position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a;"></span>';
+  const wrap = document.createElement('div');
+  wrap.id = 'black-ai-frame-wrap';
+  wrap.innerHTML = `
+    <div id="black-ai-header">
+      <span>BLACK ORGANIZATION AI</span>
+      <span id="black-ai-close">Ã—</span>
+    </div>
+    <iframe id="black-ai-frame" src="${CONFIG.botUrl}" allow="microphone; clipboard-read; clipboard-write"></iframe>
+  `;
+  bubble.addEventListener('click', () => wrap.classList.add('open'));
+  const closeButton = wrap.querySelector('#black-ai-close');
+  if (closeButton) closeButton.addEventListener('click', () => wrap.classList.remove('open'));
+  document.body.appendChild(bubble);
+  document.body.appendChild(wrap);
+  window.BLACK_AI = { open: () => wrap.classList.add('open'), close: () => wrap.classList.remove('open'), config: CONFIG };
+})();
+</script>
+
+
+<div class="bo-network-bar" style="position:fixed;left:16px;right:16px;bottom:12px;z-index:2147483646;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;background:rgba(10,9,4,.92);color:#f3ede0;border:1px solid rgba(201,162,39,.45);box-shadow:0 10px 28px rgba(0,0,0,.16);font:600 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:10px 14px;">
+  <span>BLACK ORGANIZATION</span>
+  <a href="blackorganization.html" style="color:#e8cc7c;text-decoration:none;">Home</a>
+  <a href="allinfo.html" style="color:#e8cc7c;text-decoration:none;">Directory</a>
+  <a href="register.html" style="color:#e8cc7c;text-decoration:none;">Register</a>
+</div>
+
+</body>
+</html>

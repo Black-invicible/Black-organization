@@ -1,23 +1,22 @@
 {
-  "name": "black-organization",
+  "name": "black-organization-backend",
   "version": "1.0.0",
-  "description": "Black Organization website and community platform",
+  "description": "Node.js backend for Black Organization with MongoDB support.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "nodemon server.js"
   },
-  "keywords": [
-    "black",
-    "organization",
-    "community",
-    "nonprofit",
-    "website"
-  ],
-  "author": "Black Organization",
-  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
-    "express": "^4.19.2",
-    "sqlite3": "^5.1.7"
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
