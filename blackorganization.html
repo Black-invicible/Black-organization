@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Organization — One Mind. One Vision. One World.</title>
+<meta name="description" content="Black Organization is a multi-subsidiary creative and technology enterprise founded by CT Black — writing, design, software, music, fashion, and more, all under one name.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0904;
+    --panel:#141210;
+    --panel-2:#1b1815;
+    --ivory:#f3ede0;
+    --gold:#c9a227;
+    --gold-light:#e8cc7c;
+    --gold-deep:#9c7c1c;
+    --muted:#8a8271;
+    --line: rgba(243,237,224,0.13);
+    --line-strong: rgba(243,237,224,0.26);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--ivory);font-family:'Inter',sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--gold);color:var(--black);}
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;font-weight:700;line-height:1.06;}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,9,4,0.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1220px;margin:0 auto;}
+  .nav-brand{display:flex;align-items:center;gap:12px;}
+  .nav-brand .crown{width:32px;height:32px;}
+  .nav-brand .word{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:0.02em;}
+  .nav-brand .word span{color:var(--gold-light);}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.13em;text-transform:uppercase;color:var(--ivory);opacity:0.72;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .nav-toggle span{width:22px;height:2px;background:var(--ivory);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:170px 0 100px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 20%, rgba(201,162,39,0.14), transparent 60%);}
+  .hero .wrap{position:relative;}
+  .crest{width:104px;height:104px;margin:0 auto 30px;}
+  .eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;font-size:11px;color:var(--gold-light);margin-bottom:22px;}
+  .eyebrow::before,.eyebrow::after{content:"";width:30px;height:1px;background:var(--gold);}
+  .hero h1{font-size:clamp(46px,8vw,108px);letter-spacing:0.01em;}
+  .hero h1 .gold-txt{
+    background:linear-gradient(115deg,var(--gold-deep),var(--gold-light) 45%,var(--gold) 75%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .sub{margin-top:20px;font-family:'Playfair Display',serif;font-style:italic;font-size:19px;color:var(--gold-light);}
+  .hero p.lede{margin:24px auto 0;font-size:15.5px;line-height:1.85;color:#c9c2ac;max-width:560px;font-weight:300;}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--black);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--gold);transition:background .2s,color .2s;}
+  .btn-gold:hover{background:transparent;color:var(--gold-light);}
+  .btn-line{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--line-strong);color:var(--ivory);transition:border-color .2s;}
+  .btn-line:hover{border-color:var(--gold-light);}
+  .btn-register-link{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--black);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 26px;border:1px solid var(--gold);transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 12px 28px rgba(201,162,39,.18);}
+  .btn-register-link:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(201,162,39,.26);}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{overflow:hidden;background:var(--gold);border-top:1px solid var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding:15px 0;}
+  .marquee-track{display:flex;width:max-content;animation:mfwd 32s linear infinite;}
+  @keyframes mfwd{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+  .m-group{display:flex;align-items:center;}
+  .m-item{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--black);padding:0 24px;white-space:nowrap;font-weight:600;}
+  .m-sep{color:var(--black);opacity:0.5;font-size:12px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:104px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:54px;border-bottom:1px solid var(--line);padding-bottom:26px;}
+  .section-head h2{font-size:clamp(30px,4.2vw,48px);}
+  .section-head .cap{max-width:320px;font-size:13.5px;color:var(--muted);line-height:1.7;padding-bottom:4px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:start;}
+  .about-text p{font-size:16px;line-height:1.85;color:#cfc9b8;margin-bottom:18px;max-width:540px;font-weight:300;}
+  .about-text p:first-child{font-size:19px;color:var(--ivory);}
+  .stat-strip{border-top:1px solid var(--line);margin-top:8px;}
+  .stat-row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);}
+  .stat-row .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;}
+  .stat-row .v{font-family:'Playfair Display',serif;font-size:19px;color:var(--gold-light);}
+
+  /* ---------- COMPANIES GRID ---------- */
+  .co-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .co-card{background:var(--panel);padding:34px 28px;display:flex;flex-direction:column;transition:background .25s;}
+  .co-card:hover{background:var(--panel-2);}
+  .co-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);}
+  .co-card h3{font-size:23px;margin-top:16px;}
+  .co-card p{font-size:13.5px;color:var(--muted);line-height:1.65;margin-top:12px;flex-grow:1;}
+  .co-link{
+    margin-top:22px;display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gold-light);border-bottom:1px solid var(--gold);padding-bottom:4px;align-self:flex-start;
+    transition:opacity .2s;
+  }
+  .co-link:hover{opacity:0.7;}
+
+  /* ---------- GALLERY BANNER ---------- */
+  .gallery-banner{
+    background:linear-gradient(120deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line-strong);padding:50px 44px;
+    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+  }
+  .gallery-banner h3{font-size:28px;}
+  .gallery-banner p{margin-top:10px;font-size:14px;color:var(--muted);max-width:440px;line-height:1.7;}
+
+  /* ---------- ROSTER ---------- */
+  .roster-note{font-size:13.5px;color:var(--muted);max-width:640px;line-height:1.7;margin-bottom:40px;}
+  .roster-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;}
+  .roster-item{
+    display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);
+  }
+  .roster-item .idx{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);width:24px;flex-shrink:0;}
+  .roster-item .name{font-size:14.5px;color:#d8d2c2;flex-grow:1;}
+  .roster-item.live .name{color:var(--ivory);font-weight:500;}
+  .roster-item a.rlink{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-light);border-bottom:1px solid var(--gold);padding-bottom:2px;flex-shrink:0;}
+  .roster-item .soon{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:start;}
+  .contact-grid h2{font-size:clamp(32px,4.4vw,52px);}
+  .contact-grid .lede{font-size:15.5px;color:#c9c2ac;line-height:1.8;margin-top:20px;max-width:470px;font-weight:300;}
+  .info-row{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  .info-row:last-child{border-bottom:1px solid var(--line);}
+  .info-row .label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);width:110px;flex-shrink:0;}
+  .info-row .val{font-size:14.5px;color:var(--ivory);}
+  .founder-card{border:1px solid var(--line-strong);padding:32px;background:var(--panel);}
+  .founder-card .mono{color:var(--gold-light);}
+  .founder-card h3{font-size:26px;margin-top:14px;}
+  .founder-card p{font-size:14px;color:#cfc9b8;margin-top:12px;line-height:1.8;font-weight:300;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0;border-top:1px solid var(--line);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .fmono{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
+  footer .flinks{display:flex;gap:22px;flex-wrap:wrap;}
+  footer .flinks a{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);transition:color .2s;}
+  footer .flinks a:hover{color:var(--gold-light);}
+
+  .directory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .directory-item{background:var(--panel);border:1px solid var(--line);padding:24px;transition:background .25s;}
+  .directory-item:hover{background:var(--panel-2);}
+  .directory-item a{display:inline-block;font-family:'Playfair Display',serif;font-size:16px;color:var(--ivory);margin-bottom:10px;}
+  .directory-item p{margin-top:12px;font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- INLINE STYLES EXTRACTED ---------- */
+  .gold-light{color:var(--gold-light);}
+  .eyebrow-gold-light{color:var(--gold-light);}
+  .mono-gold-light-small{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:10px;}
+  .section-padding-top-zero{padding-top:0;}
+  .archive-label{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:10px;}
+  .directory-section{padding-top:0;}
+  .site-directory-label{color:var(--gold-light);}
+  .contact-label{color:var(--gold-light);}
+  .archive-banner-label{font-family:'JetBrains Mono',monospace;color:var(--gold-light);font-size:10px;}
+
+  @media (max-width:920px){
+    .nav-links{position:fixed;top:65px;left:0;right:0;bottom:0;background:var(--black);flex-direction:column;justify-content:flex-start;padding:36px 32px;gap:26px;transform:translateX(100%);transition:transform .3s ease;}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:13px;opacity:1;}
+    .nav-toggle{display:flex;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .co-grid{grid-template-columns:1fr;}
+    .roster-grid{grid-template-columns:1fr;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+    .gallery-banner{flex-direction:column;align-items:flex-start;}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- PAPER / GOLD / WHITE / BLACK ROSTER SYSTEM ---------- */
+  .roster-section{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(201,162,39,.16), transparent 26%),
+      radial-gradient(circle at 88% 80%, rgba(201,162,39,.10), transparent 28%),
+      linear-gradient(rgba(243,237,224,.98), rgba(243,237,224,.98)),
+      repeating-linear-gradient(0deg, rgba(10,9,4,.025) 0, rgba(10,9,4,.025) 1px, transparent 1px, transparent 5px);
+    color:var(--black);
+    border-top:1px solid rgba(201,162,39,.45);
+    border-bottom:1px solid rgba(201,162,39,.45);
+  }
+  .roster-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.38;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(10,9,4,.018) 3px, rgba(10,9,4,.018) 4px),
+      repeating-linear-gradient(0deg, transparent 0, transparent 4px, rgba(201,162,39,.018) 4px, rgba(201,162,39,.018) 5px);
+    mix-blend-mode:multiply;
+  }
+  .roster-section .wrap{position:relative;z-index:1;}
+  .roster-section .section-head{
+    border-bottom-color:rgba(10,9,4,.16);
+  }
+  .roster-section .section-head h2{color:var(--black);}
+  .roster-section .section-head .cap{color:#5f594d;}
+  .roster-section .eyebrow{color:#8b6e14;}
+  .roster-section .eyebrow::before,.roster-section .eyebrow::after{background:var(--gold-deep);}
+  .roster-intro{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:28px;
+    align-items:center;
+    margin:0 0 42px;
+    padding:28px 30px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(10,9,4,.14);
+    border-left:5px solid var(--gold);
+    box-shadow:0 12px 30px rgba(10,9,4,.06);
+  }
+  .roster-intro-mark{
+    width:72px;height:72px;
+    display:grid;place-items:center;
+    background:var(--black);
+    color:var(--gold-light);
+    border:2px solid var(--gold);
+    font-family:'Playfair Display',serif;
+    font-size:22px;font-weight:900;
+    letter-spacing:.04em;
+  }
+  .roster-kicker{color:#8b6e14;font-size:10px;}
+  .roster-intro p{
+    margin-top:10px;
+    max-width:850px;
+    color:#48443b;
+    line-height:1.85;
+    font-size:14px;
+  }
+  .updated-directory{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
+  }
+  .roster-section .directory-item{
+    position:relative;
+    overflow:hidden;
+    min-height:158px;
+    background:rgba(255,255,255,.86);
+    color:var(--black);
+    border:1px solid rgba(10,9,4,.13);
+    border-top:3px solid var(--gold);
+    padding:25px 23px 22px;
+    box-shadow:0 7px 18px rgba(10,9,4,.045);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .roster-section .directory-item::after{
+    content:"✦";
+    position:absolute;
+    right:16px;top:12px;
+    color:var(--gold);
+    font-size:12px;
+    opacity:.65;
+  }
+  .roster-section .directory-item:hover{
+    background:#fff;
+    border-color:rgba(201,162,39,.65);
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px rgba(10,9,4,.10);
+  }
+  .roster-section .directory-item a{
+    color:var(--black);
+    font-size:17px;
+    line-height:1.2;
+    padding-right:20px;
+  }
+  .roster-section .directory-item a:hover{color:#8b6e14;}
+  .roster-section .directory-item p{
+    color:#666055;
+    margin-top:10px;
+    line-height:1.65;
+    font-size:13px;
+  }
+  @media(max-width:1000px){
+    .updated-directory{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media(max-width:620px){
+    .roster-intro{grid-template-columns:1fr;padding:24px;}
+    .updated-directory{grid-template-columns:1fr;}
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="nav-brand">
+      <svg class="crown" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#c9a227" stroke-width="1.3"/><path d="M17 26 L23 34 L30 22 L37 34 L43 26 L40 40 L20 40 Z" fill="none" stroke="#e8cc7c" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span class="word">Black <span>Organization</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#companies">Companies</a>
+      <a href="#roster">Full Roster</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <svg class="crest" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="55" fill="none" stroke="#c9a227" stroke-width="1"/>
+        <circle cx="60" cy="60" r="46" fill="none" stroke="#e8cc7c" stroke-width="0.7"/>
+        <path d="M35 52 L45 66 L60 40 L75 66 L85 52 L80 78 L40 78 Z" fill="none" stroke="#c9a227" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="35" cy="52" r="2.4" fill="#e8cc7c"/><circle cx="60" cy="40" r="2.4" fill="#e8cc7c"/><circle cx="85" cy="52" r="2.4" fill="#e8cc7c"/>
+      </svg>
+      <div class="eyebrow mono">Founded By CT BLACK</div>
+      <h1><span class="gold-txt">Black Organization</span></h1>
+      <div class="sub">"Ruling The World."</div>
+      <p class="lede">A multi-subsidiary creative and technology enterprise — writing, design, software, music, fashion, media, and more, all built and run under one name. One mind. One vision. One world.</p>
+      <br>
+      <h2>What is Black organization </h2>
+      <p class="lede"></p>
+      <div class="hero-ctas">
+        <a href="register.html" class="btn-register-link">Register now</a>
+        <a href="#companies" class="btn-gold">Explore Our Companies</a>
+        <a href="artcraftdesign%20(2).html" class="btn-line">View the Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="m-group">
+        <span class="m-item">Programming</span><span class="m-sep">✦</span>
+        <span class="m-item">Music</span><span class="m-sep">✦</span>
+        <span class="m-item">Fashion</span><span class="m-sep">✦</span>
+        <span class="m-item">Writing</span><span class="m-sep">✦</span>
+        <span class="m-item">Graphics</span><span class="m-sep">✦</span>
+        <span class="m-item">Media</span><span class="m-sep">✦</span>
+        <span class="m-item">Innovation</span><span class="m-sep">✦</span>
+      </div>
+      <div class="m-group">
+        <span class="m-item">Programming</span><span class="m-sep">✦</span>
+        <span class="m-item">Music</span><span class="m-sep">✦</span>
+        <span class="m-item">Fashion</span><span class="m-sep">✦</span>
+        <span class="m-item">Writing</span><span class="m-sep">✦</span>
+        <span class="m-item">Graphics</span><span class="m-sep">✦</span>
+        <span class="m-item">Media</span><span class="m-sep">✦</span>
+        <span class="m-item">Innovation</span><span class="m-sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono gold-light">Who We Are</div>
+          <h2>One Name,<br>Many Companies</h2>
+        </div>
+        <p class="cap">Every subsidiary carries the same standard — intentional, well-made, and unmistakably its own.</p>
+      </div>
+      <div class="about-grid reveal">
+        <div>
+          <div class="stat-strip">
+            <div class="stat-row"><span class="k">Founder</span><span class="v">CT Black</span></div>
+            <div class="stat-row"><span class="k">Pages In Current Roster</span><span class="v">42</span></div>
+            <div class="stat-row"><span class="k">Live Sites</span><span class="v">7</span></div>
+            <div class="stat-row"><span class="k">Base</span><span class="v">Lagos</span></div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Black Organization is a movement of visionaries, creators, and innovators building a better future through creativity, technology, and purpose.</p>
+          <p>What started as a handful of ideas has grown into a roster of nearly forty companies — spanning software, fashion, music, laundry services, publishing, and more — each one formalized as its own subsidiary under Black Organization's name.</p>
+          <p>This page is the map. Every company with a live site is linked below — navigate to it directly to find out more about what it does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPANIES ================= -->
+  <section id="companies" class="section-padding-top-zero">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono eyebrow-gold-light">Live Now</div>
+          <h2>Our Companies</h2>
+        </div>
+        <p class="cap">all black organization subsidiaries have a live site. Tap through to explore each one.</p>
+      </div>
+      <div class="co-grid reveal">
+
+        <div class="co-card">
+          <div class="co-tag">Fashion House</div>
+          <h3>Black Fashion</h3>
+          <p>Clothing designed for the way confidence actually feels — outerwear, essentials, accessories, and limited drops.</p>
+          <a href="black-fashion.html" class="co-link">Navigate to black-fashion. →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Graphics &amp; Design</div>
+          <h3>Designwurld</h3>
+          <p>The graphics and design studio of Black Organization — branding, print, digital, and identity work.</p>
+          <a href="DSW.html" class="co-link">Navigate to DSW →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Software Development</div>
+          <h3>OworldTech</h3>
+          <p>Web platforms and full-stack systems, engineered end to end for Black Organization and its clients.</p>
+          <a href="OworldTech.html" class="co-link">Navigate to OworldTech. →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Training &amp; Creative Studio</div>
+          <h3>Creative Academy</h3>
+          <p>Writing, design, code, sound, and research — taught and made in the open, with its own writing room and code lab.</p>
+          <a href="CreativeAcademy%20v2.1.html" class="co-link">Navigate to CreativeAcademy  →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Central Meeting Center</div>
+          <h3>Golden Empire International</h3>
+          <p>Formerly the overall headquarters, now the strategic hub for decision-making, planning, and corporate discussions.</p>
+          <a href="goldenempireintl.html" class="co-link">Navigate to goldenempireintl. →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Media &amp; Marketing</div>
+          <h3>Golden Empire Studio</h3>
+          <p>Product marketing, advertising, and distribution — keeping every visual sharp and every brand consistent.</p>
+          <a href="GoldenEmpireStudio.html" class="co-link">Navigate to GoldenEmpireStudio. →</a>
+        </div>
+
+        <div class="co-card">
+          <div class="co-tag">Media &amp; info</div>
+          <h3>Info</h3>
+          <p>Black Organization all informations. One Place for all your Informations.</p>
+          <a href="allinfo.html" class="co-link">Navigate to Allinfo. →</a>
+        </div> 
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY BANNER ================= -->
+  <section class="section-padding-top-zero">
+    <div class="wrap">
+      <div class="gallery-banner reveal">
+        <div>
+          <div class="mono" style="color:var(--gold-light);font-size:10px;">Archive</div>
+          <h3>Art, Craft &amp; Design</h3>
+          <p>A running gallery of work from across Black Organization — hand-drawn pieces, AI-assisted work, and finished Designwurld design pieces.</p>
+        </div>
+        <a href="artcraftdesign%20(2).html" class="btn-gold">Navigate to artcraftdesign →</a>
+      </div>
+    </div>
+  </section>
+
+   <!-- ================= FREE TOOLS ================= -->
+     <section class="section-padding-top-zero">
+    <div class="wrap">
+      <div class="gallery-banner reveal">
+        <div>
+          <div class="mono" style="color:var(--gold-light);font-size:10px;">Document Archive</div>
+          <h3>pdf-doc &amp; Tool</h3>
+          <p>FREE SPECIAL TOOL PROVIDED BY BLACK ORGANIZATION </p> 
+          <p>Store PDF and Word documents and also supports html directly in this browser-based archive, organize them, search them, and preview supported files without leaving the workspace </p>       
+          </div>
+        <a href="pdf-doc.html" class="btn-gold">Navigate to pdf-doc →</a>
+      </div>
+    </div>
+  </section>
+
+   <!-- ================= FREE TOOLS ================= -->
+     <section class="section-padding-top-zero">
+    <div class="wrap">
+      <div class="gallery-banner reveal">
+        <div>
+          <div class="mono" style="color:var(--gold-light);font-size:10px;">Story Archive</div>
+          <h3>story &amp; art</h3>
+          <p>HISTORY OF ICON FIGURES THAT NEEDED TO BE KNOWN BY THE WORLD. PROVIDED BY BLACK ORGANIZATION </p> 
+          <p>Explore artists, music icons, sports champions, activists, and visionaries through structured biographies and milestone stories.          </div>
+        <a href="storyart.html" class="btn-gold">Navigate to StoryArt →</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- ================= FREE TOOLS ================= -->
+     <section class="section-padding-top-zero">
+    <div class="wrap">
+      <div class="gallery-banner reveal">
+        <div>
+          <div class="mono" style="color:var(--gold-light);font-size:10px;">Story Archive</div>
+          <h3>video audio &amp; link</h3>
+          <p>A HOME FOR CREATORS TO STREAM AND UPLOAD. PROVIDED BY BLACK ORGANIZATION </p> 
+          <p>Luxury home for Black creators. Upload once, stream forever. Double-tap any video to send gold love, like, share to any app.         
+         <a href="videoaudiolinks (1).html" class="btn-gold">Navigate to VAL →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SITE DIRECTORY ================= -->
+  <section id="directory" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono" style="color:var(--gold-light)">Site Directory</div>
+          <h2>ALL BLACK ORGANIZATIONS COMPANY</h2>
+        </div>
+        <p class="cap">EVERY BLACK ORGANIZATION WEBSITES ARE LINKED HERE</p>
+      </div>
+      <div class="directory-grid reveal">
+        <div class="directory-item"><a href="allinfo.html">allinfo.</a><p>General company overview and reference page for Black Organization.</p></div>
+        <div class="directory-item"><a href="artcraftdesign%20(2).html">artcraftdesign</a><p>Creative gallery showcasing art, craft, design, and finished work from the organization.</p></div>
+        <div class="directory-item"><a href="artiog.html">artiog.</a><p>Artio G brand page with the creative identity and services offered.</p></div>
+        <div class="directory-item"><a href="black-academy.html">black-academy.</a><p>Black Academy training, mentorship, and creative education programs.</p></div>
+        <div class="directory-item"><a href="black-fashion.html">black-fashion.</a><p>Black Organization fashion page focused on apparel, styling, and product presentation.</p></div>
+        <div class="directory-item"><a href="black-house.html">black-house.</a><p>Lifestyle and hospitality page for Black House initiatives.</p></div>
+        <div class="directory-item"><a href="black-store.html">black-store.</a><p>Retail and storefront page for products and merchandise.</p></div>
+        <div class="directory-item"><a href="blackmov%20(3).html">blackmov</a><p>Media and movement page highlighting Black Organization film and video work.</p></div>
+        <div class="directory-item"><a href="calculus.html">calculus.</a><p>Services or project page related to technical planning and analytics.</p></div>
+        <div class="directory-item"><a href="calcus.html">calcus.</a><p>Alternate page entry for the Calculus branch or related project.</p></div>
+        <div class="directory-item"><a href="coco-pillars.html">coco-pillars.</a><p>Wellness and development page for the Coco Pillars initiative.</p></div>
+        <div class="directory-item"><a href="dc.html">dc.</a><p>Daxem Cutzies brand overview and service description.</p></div>
+        <div class="directory-item"><a href="DSW.html">DSW.</a><p>Designwurld creative and graphics studio page.</p></div>
+        <div class="directory-item"><a href="empireshoping.html">empireshoping.</a><p>Empire Shopping retail and consumer experience page.</p></div>
+        <div class="directory-item"><a href="floressial-farm.html">floressial-farm.</a><p>Floressial Farm agricultural work and sustainable development page.</p></div>
+        <div class="directory-item"><a href="floret-bank-of-naija.html">floret-bank-of-naija.</a><p>Floret Bank of Naija financial services and banking overview.</p></div>
+        <div class="directory-item"><a href="gem-studio.html">gem-studio.</a><p>Gem Universal Studio production and media services page.</p></div>
+        <div class="directory-item"><a href="gem-wash.html">gem-wash.</a><p>Gems Wash laundry services and operations page.</p></div>
+        <div class="directory-item"><a href="golden.html">golden.</a><p>Golden subsidiary overview with brand and strategy details.</p></div>
+        <div class="directory-item"><a href="golden-made.html">golden-made.</a><p>Golden Made manufacturing and design project page.</p></div>
+        <div class="directory-item"><a href="goldenchemical.html">goldenchemical.</a><p>Golden Chemical Mall page for retail and chemical distribution.</p></div>
+        <div class="directory-item"><a href="goldenempireintl.html">goldenempireintl.</a><p>Golden Empire International headquarters and corporate planning page.</p></div>
+        <div class="directory-item"><a href="ge-who.html">ge-who.</a><p>GE-WHO health organization page for wellness and global outreach.</p></div>
+        <div class="directory-item"><a href="hotel-on-water.html">hotel-on-water.</a><p>Hospitality page for Hotel on Water luxury stays and experiences.</p></div>
+        <div class="directory-item"><a href="jupiter-gas.html">jupiter-gas.</a><p>Energy and fuel services page for Jupiter Gas.</p></div>
+        <div class="directory-item"><a href="lagos-housing.html">lagos-housing.</a><p>Residential development initiatives under Lagos Housing.</p></div>
+        <div class="directory-item"><a href="M%26T-company-info.html">M&T-company-info.</a><p>Marcopolo and Taunder corporate information page.</p></div>
+        <div class="directory-item"><a href="monetary.html">monetary.</a><p>Monetary finance and economic services page.</p></div>
+        <div class="directory-item"><a href="nivas.html">nivas.</a><p>Nivas brand page with company positioning and services.</p></div>
+        <div class="directory-item"><a href="odium.html">odium.</a><p>Odium brand page with project and service overview.</p></div>
+        <div class="directory-item"><a href="ovaseas.html">ovaseas.</a><p>Ovaseas services page for logistics and global operations.</p></div>
+        <div class="directory-item"><a href="pillar-wars-and-wall.html">pillar-wars-and-wall.</a><p>Strategic project page for Pillar Wars and Wall initiatives.</p></div>
+        <div class="directory-item"><a href="research.html">research.</a><p>Research Universe page for development, study, and innovation.</p></div>
+        <div class="directory-item"><a href="storyart.html">storyart.</a><p>Story Art page presenting narrative visuals and creative pieces.</p></div>
+        <div class="directory-item"><a href="storybooks.html">storybooks.</a><p>Storybooks publishing page for editorial and literary work.</p></div>
+        <div class="directory-item"><a href="taunder.html">taunder.</a><p>Taunder brand and development page.</p></div>
+        <div class="directory-item"><a href="videoaudiolinks%20(1).html">videoaudiolinks</a><p>Video and audio showcase page for multimedia content.</p></div>
+        <div class="directory-item"><a href="OworldTech.html">OworldTech.</a><p>OworldTech page for software development and technology services.</p></div>
+        <div class="directory-item"><a href="CreativeAcademy%20v2.1.html">CreativeAcademy </a><p>Creative Academy training, research, and studio page.</p></div>
+        <div class="directory-item"><a href="CreativeAcademy%20v2.1%20-%20Copy.html">CreativeAcademy</a><p>Backup copy of the Creative Academy page.</p></div>
+        <div class="directory-item"><a href="blackorganization.html">blackorganization.</a><p>This Black Organization directory page.</p></div>
+        <div class="directory-item"><a href="GoldenEmpireStudio.html">GoldenEmpireStudio.</a><p>Golden Empire Studio media and marketing page.</p></div>
+        <div class="directory-item"><a href="boedu/boedu.html">boedu/boedu.</a><p>Boedu education page in the Black Organization archive.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= UPDATED ROSTER ================= -->
+  <section id="roster" class="roster-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono">The Current Directory</div>
+          <h2>Black Organization<br>Site Roster</h2>
+        </div>
+        <p class="cap">
+          This directory reflects the latest WEB pages supplied for the Black Organization workspace.
+          Duplicate or outdated roster entries are intentionally removed in favor of the current file set.
+        </p>
+      </div>
+
+      <div class="roster-intro reveal">
+        <div class="roster-intro-mark">BO</div>
+        <div>
+          <div class="mono roster-kicker">Official Workspace Directory</div>
+          <p>
+            Use this section as the central map of the organization's connected web pages. Each card
+            represents a current HTML page and explains its purpose so visitors, collaborators, and team
+            members can understand what they are opening before navigating there. The listing follows the
+            newer roster you provided and is designed to remain readable as the organization grows.
+          </p>
+        </div>
+      </div>
+
+      <div class="directory-grid updated-directory reveal">
+        <div class="directory-item"><a href="allinfo.html">allinfo.</a><p>General company overview and reference page for Black Organization.</p></div>
+        <div class="directory-item"><a href="artcraftdesign%20(2).html">artcraftdesign (2).</a><p>Creative gallery showcasing art, craft, design, and finished work from the organization.</p></div>
+        <div class="directory-item"><a href="artiog.html">artiog.</a><p>Artio G brand page with the creative identity and services offered.</p></div>
+        <div class="directory-item"><a href="black-academy.html">black-academy.</a><p>Black Academy training, mentorship, and creative education programs.</p></div>
+        <div class="directory-item"><a href="black-fashion.html">black-fashion.</a><p>Black Organization fashion page focused on apparel, styling, and product presentation.</p></div>
+        <div class="directory-item"><a href="black-house.html">black-house.</a><p>Lifestyle and hospitality page for Black House initiatives.</p></div>
+        <div class="directory-item"><a href="black-store.html">black-store.</a><p>Retail and storefront page for products and merchandise.</p></div>
+        <div class="directory-item"><a href="blackmov%20(3).html">blackmov (3).</a><p>Media and movement page highlighting Black Organization film and video work.</p></div>
+        <div class="directory-item"><a href="calculus.html">calculus.</a><p>Services or project page related to technical planning and analytics.</p></div>
+        <div class="directory-item"><a href="calcus.html">calcus.</a><p>Alternate page entry for the Calculus branch or related project.</p></div>
+        <div class="directory-item"><a href="coco-pillars.html">coco-pillars.</a><p>Wellness and development page for the Coco Pillars initiative.</p></div>
+        <div class="directory-item"><a href="dc.html">dc.</a><p>Daxem Cutzies brand overview and service description.</p></div>
+        <div class="directory-item"><a href="DSW.html">DSW.</a><p>Designwurld creative and graphics studio page.</p></div>
+        <div class="directory-item"><a href="empireshoping.html">empireshoping.</a><p>Empire Shopping retail and consumer experience page.</p></div>
+        <div class="directory-item"><a href="floressial-farm.html">floressial-farm.</a><p>Floressial Farm agricultural work and sustainable development page.</p></div>
+        <div class="directory-item"><a href="floret-bank-of-naija.html">floret-bank-of-naija.</a><p>Floret Bank of Naija financial services and banking overview.</p></div>
+        <div class="directory-item"><a href="gem-studio.html">gem-studio.</a><p>Gem Universal Studio production and media services page.</p></div>
+        <div class="directory-item"><a href="gem-wash.html">gem-wash.</a><p>Gems Wash laundry services and operations page.</p></div>
+        <div class="directory-item"><a href="golden.html">golden.</a><p>Golden subsidiary overview with brand and strategy details.</p></div>
+        <div class="directory-item"><a href="golden-made.html">golden-made.</a><p>Golden Made manufacturing and design project page.</p></div>
+        <div class="directory-item"><a href="goldenchemical.html">goldenchemical.</a><p>Golden Chemical Mall page for retail and chemical distribution.</p></div>
+        <div class="directory-item"><a href="goldenempireintl.html">goldenempireintl.</a><p>Golden Empire International headquarters and corporate planning page.</p></div>
+        <div class="directory-item"><a href="ge-who.html">ge-who.</a><p>GE-WHO health organization page for wellness and global outreach.</p></div>
+        <div class="directory-item"><a href="hotel-on-water.html">hotel-on-water.</a><p>Hospitality page for Hotel on Water luxury stays and experiences.</p></div>
+        <div class="directory-item"><a href="jupiter-gas.html">jupiter-gas.</a><p>Energy and fuel services page for Jupiter Gas.</p></div>
+        <div class="directory-item"><a href="lagos-housing.html">lagos-housing.</a><p>Residential development initiatives under Lagos Housing.</p></div>
+        <div class="directory-item"><a href="M%26T-company-info.html">M&amp;T-company-info.html</a><p>Marcopolo and Taunder corporate information page.</p></div>
+        <div class="directory-item"><a href="monetary.html">monetary.</a><p>Monetary finance and economic services page.</p></div>
+        <div class="directory-item"><a href="nivas.html">nivas.</a><p>Nivas brand page with company positioning and services.</p></div>
+        <div class="directory-item"><a href="odium.html">odium.</a><p>Odium brand page with project and service overview.</p></div>
+        <div class="directory-item"><a href="ovaseas.html">ovaseas.</a><p>Ovaseas services page for logistics and global operations.</p></div>
+        <div class="directory-item"><a href="pillar-wars-and-wall.html">pillar-wars-and-wall.</a><p>Strategic project page for Pillar Wars and Wall initiatives.</p></div>
+        <div class="directory-item"><a href="research.html">research.</a><p>Research Universe page for development, study, and innovation.</p></div>
+        <div class="directory-item"><a href="storyart.html">storyart.</a><p>Story Art page presenting narrative visuals and creative pieces.</p></div>
+        <div class="directory-item"><a href="storybooks.html">storybooks.</a><p>Storybooks publishing page for editorial and literary work.</p></div>
+        <div class="directory-item"><a href="taunder.html">taunder.</a><p>Taunder brand and development page.</p></div>
+        <div class="directory-item"><a href="videoaudiolinks%20(1).html">videoaudiolinks </a><p>Video and audio showcase page for multimedia content.</p></div>
+        <div class="directory-item"><a href="OworldTech.html">OworldTech.</a><p>OworldTech page for software development and technology services.</p></div>
+        <div class="directory-item"><a href="CreativeAcademy%20v2.1.html">CreativeAcademy v2.1.</a><p>Creative Academy training, research, and studio page.</p></div>
+        <div class="directory-item"><a href="CreativeAcademy%20v2.1%20-%20Copy.html">CreativeAcademy v2.1 - Copy.html</a><p>Backup copy of the Creative Academy page.</p></div>
+        <div class="directory-item"><a href="blackorganization.html">blackorganization.</a><p>This Black Organization directory page.</p></div>
+        <div class="directory-item"><a href="GoldenEmpireStudio.html">GoldenEmpireStudio.</a><p>Golden Empire Studio media and marketing page.</p></div>
+        <div class="directory-item"><a href="boedu/boedu.html">boedu.</a><p>Boedu education page in the Black Organization archive.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="eyebrow mono" style="color:var(--gold-light)">Get In Touch</div>
+        <h2>Reach Black<br>Organization.</h2>
+        <p class="lede">For partnerships, subsidiary inquiries, or general questions about anything under the Black Organization name.</p>
+        <div class="info-row"><div class="label">Email</div><div class="val">blackorganizationctblack@gmail.com</div></div>
+        <div class="info-row"><div class="label">Phone</div><div class="val">+234 915 053 8752</div></div>
+        <div class="info-row"><div class="label">Address</div><div class="val">Road 10, Atlantic Garden Estate, General Paints, Lekki-Epe Expressway, Lagos, Nigeria</div></div>
+      </div>
+      <div class="founder-card reveal">
+        <div class="mono">Founder</div>
+        <h3>CT Black</h3>
+        <p>Olumide Israel Pelumi also Known as CT BLACK — founder of Black Organization and every subsidiary listed on this page. Black Organization exists as the single name behind all of it: OUR MOTTO: "#RULING THE WORLD."</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fmono">© <span id="year"></span> BLACK ORGANIZATION — FOUNDED BY CT BLACK</span>
+    <div class="flinks">
+      <a href="#about">About</a>
+      <a href="#companies">Companies</a>
+      <a href="#roster">Full Roster</a>
+      <a href="artcraftdesign%20(2).html">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, {threshold:0.1});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+
+<script>
+(function () {
+  if (window.__BLACK_ORG_AI_EMBED__) return;
+  window.__BLACK_ORG_AI_EMBED__ = true;
+  const CONFIG = { botUrl: 'https://black-organization.org/bot', position: 'bottom-right', theme: 'black-gold', organization: 'BLACK ORGANIZATION' };
+  const style = document.createElement('style');
+  style.textContent = `
+    #black-ai-bubble{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border-radius:50%;background:#0a0a0a;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,.28);} #black-ai-bubble:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 38px rgba(212,175,55,.38);} #black-ai-bubble img{width:36px;height:36px;object-fit:contain;display:block;} #black-ai-frame-wrap{position:fixed;right:24px;bottom:100px;width:420px;height:640px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);background:#fff;border:1px solid #D4AF37;border-radius:20px;overflow:hidden;display:none;z-index:2147483647;box-shadow:0 30px 70px rgba(0,0,0,.25);} #black-ai-frame-wrap.open{display:block;animation:blackSlide .28s ease;} #black-ai-frame{width:100%;height:100%;border:0;} @keyframes blackSlide{from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);}} #black-ai-header{height:46px;background:#0a0a0a;color:#D4AF37;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;} #black-ai-close{cursor:pointer;font-size:22px;line-height:1;} @media(max-width:480px){#black-ai-frame-wrap{width:100vw;height:100vh;right:0;left:0;bottom:0;border-radius:0;max-width:100vw;max-height:100vh;}}
+  `;
+  document.head.appendChild(style);
+  const bubble = document.createElement('div');
+  bubble.id = 'black-ai-bubble';
+  bubble.innerHTML = '<img src="https://cdn.fbsbx.com/v/t65.102178-21/774265991_1532109481443121_9009376856195502772_n.jpg/black_logo_05_app_icon.png" alt="BLACKORG AI"><span style="position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a;"></span>';
+  const wrap = document.createElement('div');
+  wrap.id = 'black-ai-frame-wrap';
+  wrap.innerHTML = `
+    <div id="black-ai-header">
+      <span>BLACK ORGANIZATION AI</span>
+      <span id="black-ai-close">X</span>
+    </div>
+    <iframe id="black-ai-frame" src="${CONFIG.botUrl}" allow="microphone; clipboard-read; clipboard-write"></iframe>
+  `;
+  bubble.addEventListener('click', () => wrap.classList.add('open'));
+  const closeButton = wrap.querySelector('#black-ai-close');
+  if (closeButton) closeButton.addEventListener('click', () => wrap.classList.remove('open'));
+  document.body.appendChild(bubble);
+  document.body.appendChild(wrap);
+  window.BLACK_AI = { open: () => wrap.classList.add('open'), close: () => wrap.classList.remove('open'), config: CONFIG };
+})();
+</script>
+
+
+<div class="bo-network-bar" style="position:fixed;left:16px;right:16px;bottom:12px;z-index:2147483646;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;background:rgba(10,9,4,.92);color:#f3ede0;border:1px solid rgba(201,162,39,.45);box-shadow:0 10px 28px rgba(0,0,0,.16);font:600 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:10px 14px;">
+  <span>BLACK ORGANIZATION</span>
+  <a href="blackorganization.html" style="color:#e8cc7c;text-decoration:none;">Home</a>
+  <a href="allinfo.html" style="color:#e8cc7c;text-decoration:none;">Directory</a>
+  <a href="register.html" style="color:#e8cc7c;text-decoration:none;">Register</a>
+</div>
+
+</body>
+</html>

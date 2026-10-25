@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151515">
+  <meta name="description" content="Chat with BLACK ORGANIZATION on WhatsApp. Scan the QR code or use the official WhatsApp number.">
+  <title>Chat BLACK — BLACK ORGANIZATION</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #151515;
+      --card: #ffffff;
+      --text: #171717;
+      --muted: #777;
+      --line: #e9e9e9;
+      --wa: #25D366;
+      --wa-dark: #159447;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.055), transparent 28%),
+        linear-gradient(180deg, #151515 0%, #111 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px;
+    }
+
+    .page {
+      width: min(100%, 470px);
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 24px;
+      padding: 74px 30px 30px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.42);
+    }
+
+    .brand {
+      position: absolute;
+      top: -44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #050505;
+      border: 6px solid white;
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .brand-inner {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 1px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .brand-sub {
+      font-size: 5px;
+      letter-spacing: 1.5px;
+      margin-top: 3px;
+      opacity: .75;
+    }
+
+    h1 {
+      font-size: clamp(25px, 7vw, 35px);
+      letter-spacing: .3px;
+      margin-bottom: 7px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .qr-wrap {
+      width: min(100%, 310px);
+      aspect-ratio: 1;
+      margin: 0 auto 24px;
+      background: #fff;
+      padding: 13px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+    }
+
+    .qr {
+      width: 100%;
+      height: 100%;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .scan {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 11px;
+    }
+
+    .button {
+      width: 100%;
+      border: 0;
+      border-radius: 13px;
+      min-height: 50px;
+      padding: 13px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .whatsapp {
+      color: #fff;
+      background: var(--wa);
+      box-shadow: 0 8px 22px rgba(37,211,102,.25);
+    }
+
+    .whatsapp:hover {
+      background: var(--wa-dark);
+    }
+
+    .secondary {
+      color: #222;
+      background: #f3f3f3;
+    }
+
+    .number {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .number strong {
+      color: #222;
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #8d8d8d;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer strong {
+      color: #bdbdbd;
+    }
+
+    .status {
+      min-height: 18px;
+      margin-top: 8px;
+      color: #159447;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 430px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      .card {
+        border-radius: 20px;
+        padding: 68px 19px 24px;
+      }
+
+      .qr-wrap {
+        width: min(100%, 285px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="card" aria-label="BLACK ORGANIZATION WhatsApp contact">
+
+      <div class="brand" aria-label="BLACK ORGANIZATION">
+        <div class="brand-inner">
+          <div class="brand-title">BLACK</div>
+          <div class="brand-sub">ORGANIZATION</div>
+        </div>
+      </div>
+
+      <h1>BLACK ORGANIZATION</h1>
+      <p class="subtitle">WhatsApp business account</p>
+
+      <div class="qr-wrap">
+        <img
+          class="qr"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkwAAAJMAQAAAAAgH8RuAAAEPklEQVR4nO2dS3LkIAxApans4Qa5/7H6BnACzUJCQKdXsTvjiZ8q1bExfoUXKqEPoCYnSf9zFkkEFChQoECBAgUKFChQoED9EEpTqkhXVY12v62S7d5H6/7Ke0YFCtQNUB/xvzT/ryKuflqa9OotNh6JiPUqXW1/5exRgQJ1R1RaNDOTYtJViolIXHeN9mLi9nF55X2jAgXqpqhUwK55rVWs/dNRgQJ1H1QxV7dQuq4iYg913zDU8+dHBQrUL0R95FXqlY5f6zXai2lpUkyLaVdzf3B55exRgQJ1P9SIeYpIuoH6aVIsgqLDB/T2NUz6xlGBAvX7UWEHnyeXXa3rfORzUb/1+MzXVy76gaBAXRz1sd6M7EOattS7yEdY/FbJnEWvQxmv+YGgQF0cJTZkXjfxHIRfWBP/8zlqNJrl635r7ZofCArUxVFLTKZXlci8x/yzWFpEFZ+gVn8aFvNdowIF6q6oYftmflCGTTSbLV29p6pKJyYDCtQRGXawVw+zaGmhVCMBEbeleZJCRNSVNNMW548KFKj7oKY/GEl5mw7g6gOGA7jYxHQJ8QdBgToiTwq4qdiolomeQxNTH2f0Bh0EBeq7ssZCn7Qs1XDaxDKCqKMzcVFQoA5KJiZiTURZrkXW21lBWhYdbKnF1/xAUKAujlpzExq/Y2Fg+HsjW6HFpFdPzXtnHWGcs0cFCtR9ULNWLUu1o2VRxtQ7L5KJ+m3yg6BAnSHp08VtE5E5Lw0PcbiB21MZ4VPmoqBAHZA1N2G5Ur7sFWt7lGYEYZZ30UFQoL4rTzGZaekkLtZUhaQajj7ERUGBOigv7GCmAoe92zLyqzVs5AdBgToqW35wcfryd9NN2zIX5CZAgTouORd9dgC/mEXbK2fSMqKDoEAdkamDuyZuayVy5aB8SeWjg6BAHZM0cFt16BqTWeKf8hQaXSex6CAoUN+SLS66WMPF0Zs9ReT5lrgoKFBnoKyJPdTMfCPf2Dlt7KUWNdu5XNdXEaqaGWt4QYE6JlGrprGrdrWxZ1pMRrtGpahvLuq1o7m8tzRlDS8oUIfkRb2o5ga/pVmvuWpeZGwyM4pF9x0Or/mBoEBdHPViX7X5qC1JQ9ujNGNFITEZUKAOyhqTmYkJ2arUphpmH5dCjh4UqHNQM8vQ4oGf8CIy9rSvMyZjD83qtdwJ/+IfCArUVVEjJpMNpUUcJrzCueO9H/iSHUd8pr5hVKBA3Qf14hxeyQXyIzjj2/+mPm4b/M5z0K75gaBA/TeoeajuOP3TAy/6ue9qKJErjBOXOufRgwJ1Msoe2wlo6wGgrpje7mn90ND3jwoUqF+K2veyWEu11w3WlurQTFJQLwoK1LmoWRrqhq/tHX0jtSppCpfTP984KlCgfjvqOS+/2cHFAVxziFt2nvwgKFCHRL8cp/td6df8QFCgQIECBQoUKFCgQIEC9VL+AmEZGseIUL6EAAAAAElFTkSuQmCC"
+          alt="QR code to chat with BLACK ORGANIZATION on WhatsApp"
+        >
+      </div>
+
+      <p class="scan">
+        Scan this code to start a WhatsApp chat with<br>
+        <strong>BLACK ORGANIZATION</strong>.
+      </p>
+
+      <div class="actions">
+        <a
+          class="button whatsapp"
+          href="https://wa.me/2349150538752?text=Hello%20BLACK%20ORGANIZATION"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span aria-hidden="true">◉</span>
+          Chat on WhatsApp
+        </a>
+
+        <button class="button secondary" id="copyBtn" type="button">
+          Copy WhatsApp Number
+        </button>
+      </div>
+
+      <div class="number">
+        WhatsApp: <strong>+234 915 053 8752</strong>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      <strong>BLACK ORGANIZATION</strong><br>
+      Official WhatsApp contact page
+    </footer>
+  </main>
+
+  <script>
+    const number = "+2349150538752";
+    const copyBtn = document.getElementById("copyBtn");
+    const status = document.getElementById("status");
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(number);
+        status.textContent = "WhatsApp number copied.";
+      } catch (error) {
+        status.textContent = "Number: " + number;
+      }
+
+      setTimeout(() => {
+        status.textContent = "";
+      }, 2500);
+    });
+  </script>
+
+<script>
+(function () {
+  if (window.__BLACK_ORG_AI_EMBED__) return;
+  window.__BLACK_ORG_AI_EMBED__ = true;
+  const CONFIG = { botUrl: 'https://black-organization.ai/bot', position: 'bottom-right', theme: 'black-gold', organization: 'BLACK ORGANIZATION' };
+  const style = document.createElement('style');
+  style.textContent = `
+    #black-ai-bubble{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border-radius:50%;background:#0a0a0a;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,.28);} #black-ai-bubble:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 38px rgba(212,175,55,.38);} #black-ai-bubble img{width:36px;height:36px;object-fit:contain;display:block;} #black-ai-frame-wrap{position:fixed;right:24px;bottom:100px;width:420px;height:640px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);background:#fff;border:1px solid #D4AF37;border-radius:20px;overflow:hidden;display:none;z-index:2147483647;box-shadow:0 30px 70px rgba(0,0,0,.25);} #black-ai-frame-wrap.open{display:block;animation:blackSlide .28s ease;} #black-ai-frame{width:100%;height:100%;border:0;} @keyframes blackSlide{from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);}} #black-ai-header{height:46px;background:#0a0a0a;color:#D4AF37;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;} #black-ai-close{cursor:pointer;font-size:22px;line-height:1;} @media(max-width:480px){#black-ai-frame-wrap{width:100vw;height:100vh;right:0;left:0;bottom:0;border-radius:0;max-width:100vw;max-height:100vh;}}
+  `;
+  document.head.appendChild(style);
+  const bubble = document.createElement('div');
+  bubble.id = 'black-ai-bubble';
+  bubble.innerHTML = '<img src="https://cdn.fbsbx.com/v/t65.102178-21/774265991_1532109481443121_9009376856195502772_n.jpg/black_logo_05_app_icon.png" alt="BLACK AI"><span style="position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a;"></span>';
+  const wrap = document.createElement('div');
+  wrap.id = 'black-ai-frame-wrap';
+  wrap.innerHTML = `
+    <div id="black-ai-header">
+      <span>BLACK ORGANIZATION AI</span>
+      <span id="black-ai-close">Ã—</span>
+    </div>
+    <iframe id="black-ai-frame" src="${CONFIG.botUrl}" allow="microphone; clipboard-read; clipboard-write"></iframe>
+  `;
+  bubble.addEventListener('click', () => wrap.classList.add('open'));
+  const closeButton = wrap.querySelector('#black-ai-close');
+  if (closeButton) closeButton.addEventListener('click', () => wrap.classList.remove('open'));
+  document.body.appendChild(bubble);
+  document.body.appendChild(wrap);
+  window.BLACK_AI = { open: () => wrap.classList.add('open'), close: () => wrap.classList.remove('open'), config: CONFIG };
+})();
+</script>
+
+
+<div class="bo-network-bar" style="position:fixed;left:16px;right:16px;bottom:12px;z-index:2147483646;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;background:rgba(10,9,4,.92);color:#f3ede0;border:1px solid rgba(201,162,39,.45);box-shadow:0 10px 28px rgba(0,0,0,.16);font:600 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:10px 14px;">
+  <span>BLACK ORGANIZATION</span>
+  <a href="blackorganization.html" style="color:#e8cc7c;text-decoration:none;">Home</a>
+  <a href="allinfo.html" style="color:#e8cc7c;text-decoration:none;">Directory</a>
+  <a href="register.html" style="color:#e8cc7c;text-decoration:none;">Register</a>
+</div>
+
+</body>
+</html>
