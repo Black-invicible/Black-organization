@@ -1,0 +1,123 @@
+const fs = require("fs");
+const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
+
+const dbDirectory = path.join(__dirname, "data");
+const dbPath = path.join(dbDirectory, "black_org.db");
+
+fs.mkdirSync(dbDirectory, { recursive: true });
+const db = new sqlite3.Database(dbPath);
+
+function run(sql, params = []) {
+  return new Promise((resolve, reject) => {
+    db.run(sql, params, function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ id: this.lastID, changes: this.changes });
+      }
+    });
+  });
+}
+
+function all(sql, params = []) {
+  return new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+}
+
+async function initDB() {
+  await run(`
+    CREATE TABLE IF NOT EXISTS contact_messages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      phone TEXT,
+      message TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  await run(`
+    CREATE TABLE IF NOT EXISTS volunteer_signups (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      focus TEXT NOT NULL,
+      interest TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  await run(`
+    CREATE TABLE IF NOT EXISTS donation_records (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      amount REAL NOT NULL,
+      purpose TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+}
+
+async function getStats() {
+  const [contactCount, volunteerCount, donationCount] = await Promise.all([
+    all(`SELECT COUNT(*) AS count FROM contact_messages`),
+    all(`SELECT COUNT(*) AS count FROM volunteer_signups`),
+    all(`SELECT COUNT(*) AS count FROM donation_records`),
+  ]);
+
+  return {
+    impactStories: 24,
+    activePrograms: 6,
+    members: 1480,
+    upcomingEvents: 9,
+    contactMessages: Number(contactCount[0]?.count || 0),
+    volunteerSignups: Number(volunteerCount[0]?.count || 0),
+    donationRecords: Number(donationCount[0]?.count || 0),
+  };
+}
+
+async function getRecentContacts(limit = 10) {
+  return all(
+    `SELECT id, name, email, phone, message, created_at FROM contact_messages ORDER BY created_at DESC LIMIT ?`,
+    [limit]
+  );
+}
+
+async function addContactMessage({ name, email, phone, message }) {
+  return run(
+    `INSERT INTO contact_messages (name, email, phone, message) VALUES (?, ?, ?, ?)`,
+    [name, email, phone || "", message]
+  );
+}
+
+async function addVolunteerSignup({ name, email, focus, interest }) {
+  return run(
+    `INSERT INTO volunteer_signups (name, email, focus, interest) VALUES (?, ?, ?, ?)`,
+    [name, email, focus, interest]
+  );
+}
+
+async function addDonation({ name, email, amount, purpose }) {
+  return run(
+    `INSERT INTO donation_records (name, email, amount, purpose) VALUES (?, ?, ?, ?)`,
+    [name, email, Number(amount), purpose]
+  );
+}
+
+module.exports = {
+  initDB,
+  getStats,
+  getRecentContacts,
+  addContactMessage,
+  addVolunteerSignup,
+  addDonation,
+};

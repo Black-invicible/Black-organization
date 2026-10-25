@@ -1,0 +1,108 @@
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, {
+    headers: { "Content-Type": "application/json" },
+    ...options,
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Request failed");
+  }
+
+  return data;
+}
+
+function setStatus(elementId, text, type = "") {
+  const target = document.getElementById(elementId);
+  if (!target) return;
+
+  target.textContent = text;
+  target.className = `form-status ${type}`.trim();
+}
+
+function bindSubmitForm(formId, endpoint, statusId, successText) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetchJson(endpoint, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      setStatus(statusId, response.message || successText, "success");
+      form.reset();
+    } catch (error) {
+      setStatus(statusId, error.message, "error");
+    }
+  });
+}
+
+function bindStaticForms() {
+  bindSubmitForm("contactForm", "/api/contact", "contactStatus", "Message sent successfully.");
+  bindSubmitForm("volunteerForm", "/api/volunteer", "volunteerStatus", "Volunteer request submitted.");
+  bindSubmitForm("donationForm", "/api/donate", "donationStatus", "Donation recorded successfully.");
+}
+
+async function loadDashboardData() {
+  const adminStats = document.getElementById("adminStatsGrid");
+  const tableBody = document.getElementById("recordsTableBody");
+
+  if (!adminStats && !tableBody) return;
+
+  try {
+    const data = await fetchJson("/api/dashboard");
+    const stats = data.stats || {};
+    const messages = Array.isArray(data.messages) ? data.messages : [];
+
+    document.getElementById("adminMembers")?.textContent = Number(stats.members || 0).toLocaleString();
+    document.getElementById("adminVolunteers")?.textContent = Number(stats.volunteerSignups || 0).toLocaleString();
+    document.getElementById("adminDonations")?.textContent = Number(stats.donationRecords || 0).toLocaleString();
+    document.getElementById("adminMessages")?.textContent = Number(stats.contactMessages || 0).toLocaleString();
+
+    document.getElementById("membersStat")?.textContent = Number(stats.members || 0).toLocaleString();
+    document.getElementById("programsStat")?.textContent = Number(stats.activePrograms || 0).toLocaleString();
+    document.getElementById("eventsStat")?.textContent = Number(stats.upcomingEvents || 0).toLocaleString();
+    document.getElementById("storiesStat")?.textContent = Number(stats.impactStories || 0).toLocaleString();
+    document.getElementById("volunteersStat")?.textContent = Number(stats.volunteerSignups || 0).toLocaleString();
+    document.getElementById("donationsStat")?.textContent = Number(stats.donationRecords || 0).toLocaleString();
+    document.getElementById("messagesStat")?.textContent = Number(stats.contactMessages || 0).toLocaleString();
+
+    if (!tableBody) return;
+
+    if (!messages.length) {
+      tableBody.innerHTML = '<tr><td colspan="5">No contact submissions available yet.</td></tr>';
+      return;
+    }
+
+    tableBody.innerHTML = messages
+      .map(
+        (item) => `
+          <tr>
+            <td>${item.name || "N/A"}</td>
+            <td>${item.email || "N/A"}</td>
+            <td>${item.phone || "N/A"}</td>
+            <td>${(item.message || "").slice(0, 120)}${(item.message || "").length > 120 ? "..." : ""}</td>
+            <td>${new Date(item.created_at).toLocaleDateString()}</td>
+          </tr>
+        `
+      )
+      .join("");
+  } catch (error) {
+    if (tableBody) {
+      tableBody.innerHTML = '<tr><td colspan="5">Unable to load records right now.</td></tr>';
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  bindStaticForms();
+  loadDashboardData();
+});

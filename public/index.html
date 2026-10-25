@@ -1,0 +1,52 @@
+# Black Organization
+
+A full community and nonprofit-style website for Black Organization, including:
+
+- Landing page with mission and impact sections
+- Multi-page navigation
+- Volunteer and donation forms
+- Contact form with backend persistence
+- SQLite database storage
+- Admin dashboard to view saved records
+- Express server to serve the site and API
+
+## Project Structure
+
+- `server.js` — Express server and API endpoints
+- `db.js` — SQLite schema and database helpers
+- `public/` — static website pages and frontend assets
+- `data/black_org.db` — SQLite database created at runtime
+
+## Getting started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the app:
+   ```bash
+   npm start
+   ```
+
+3. Open the website in a browser:
+   ```text
+   http://localhost:3000
+   ```
+
+4. View the admin dashboard:
+   ```text
+   http://localhost:3000/admin
+   ```
+
+## Features
+
+- Responsive dark-themed design
+- Contact form submissions saved to SQLite
+- Volunteer interest tracking
+- Donation record storage
+- API endpoints for stats and dashboard data
+
+## Deployment
+
+This app is ready to be deployed on platforms like Render, Railway, Fly.io, or any Node.js hosting provider.
