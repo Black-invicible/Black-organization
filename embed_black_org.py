@@ -1,0 +1,66 @@
+from pathlib import Path
+
+root = Path(r'd:\black orbanization web')
+files = sorted(root.rglob('*.html'))
+
+AI = '''
+<script>
+(function () {
+  if (window.__BLACK_ORG_AI_EMBED__) return;
+  window.__BLACK_ORG_AI_EMBED__ = true;
+  const CONFIG = { botUrl: 'https://black-organization.ai/bot', position: 'bottom-right', theme: 'black-gold', organization: 'BLACK ORGANIZATION' };
+  const style = document.createElement('style');
+  style.textContent = `
+    #black-ai-bubble{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border-radius:50%;background:#0a0a0a;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,.28);} #black-ai-bubble:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 38px rgba(212,175,55,.38);} #black-ai-bubble img{width:36px;height:36px;object-fit:contain;display:block;} #black-ai-frame-wrap{position:fixed;right:24px;bottom:100px;width:420px;height:640px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);background:#fff;border:1px solid #D4AF37;border-radius:20px;overflow:hidden;display:none;z-index:2147483647;box-shadow:0 30px 70px rgba(0,0,0,.25);} #black-ai-frame-wrap.open{display:block;animation:blackSlide .28s ease;} #black-ai-frame{width:100%;height:100%;border:0;} @keyframes blackSlide{from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);}} #black-ai-header{height:46px;background:#0a0a0a;color:#D4AF37;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;} #black-ai-close{cursor:pointer;font-size:22px;line-height:1;} @media(max-width:480px){#black-ai-frame-wrap{width:100vw;height:100vh;right:0;left:0;bottom:0;border-radius:0;max-width:100vw;max-height:100vh;}}
+  `;
+  document.head.appendChild(style);
+  const bubble = document.createElement('div');
+  bubble.id = 'black-ai-bubble';
+  bubble.innerHTML = '<img src="https://cdn.fbsbx.com/v/t65.102178-21/774265991_1532109481443121_9009376856195502772_n.jpg/black_logo_05_app_icon.png" alt="BLACK AI"><span style="position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a;"></span>';
+  const wrap = document.createElement('div');
+  wrap.id = 'black-ai-frame-wrap';
+  wrap.innerHTML = `
+    <div id="black-ai-header">
+      <span>BLACK ORGANIZATION AI</span>
+      <span id="black-ai-close">×</span>
+    </div>
+    <iframe id="black-ai-frame" src="${CONFIG.botUrl}" allow="microphone; clipboard-read; clipboard-write"></iframe>
+  `;
+  bubble.addEventListener('click', () => wrap.classList.add('open'));
+  const closeButton = wrap.querySelector('#black-ai-close');
+  if (closeButton) closeButton.addEventListener('click', () => wrap.classList.remove('open'));
+  document.body.appendChild(bubble);
+  document.body.appendChild(wrap);
+  window.BLACK_AI = { open: () => wrap.classList.add('open'), close: () => wrap.classList.remove('open'), config: CONFIG };
+})();
+</script>
+'''
+
+NETWORK = '''
+<div class="bo-network-bar" style="position:fixed;left:16px;right:16px;bottom:12px;z-index:2147483646;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;background:rgba(10,9,4,.92);color:#f3ede0;border:1px solid rgba(201,162,39,.45);box-shadow:0 10px 28px rgba(0,0,0,.16);font:600 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:10px 14px;">
+  <span>BLACK ORGANIZATION</span>
+  <a href="blackorganization.html" style="color:#e8cc7c;text-decoration:none;">Home</a>
+  <a href="allinfo.html" style="color:#e8cc7c;text-decoration:none;">Directory</a>
+  <a href="register.html" style="color:#e8cc7c;text-decoration:none;">Register</a>
+</div>
+'''
+
+updated = []
+for path in files:
+    if path.name == 'black-ai-embed.js.html':
+        continue
+    try:
+        text = path.read_text(encoding='utf-8', errors='ignore')
+    except Exception:
+        continue
+    if '</body>' not in text:
+        continue
+    if 'window.__BLACK_ORG_AI_EMBED__' not in text and 'black-ai-bubble' not in text:
+        text = text.replace('</body>', AI + '\n</body>', 1)
+    if 'bo-network-bar' not in text:
+        text = text.replace('</body>', NETWORK + '\n</body>', 1)
+    path.write_text(text, encoding='utf-8')
+    updated.append(path.name)
+
+print(f'Updated {len(updated)} HTML pages with the shared AI embed and network bar.')
+print('Sample: ' + ', '.join(updated[:10]))

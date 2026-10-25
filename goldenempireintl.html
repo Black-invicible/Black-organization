@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Empire International — Central Meeting Center of Black Organization</title>
+<meta name="description" content="Golden Empire International, formerly the headquarters of Black Organization, now serves as the group's central meeting center for strategic decision-making, planning, and corporate discussions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1a2b;
+    --navy-soft:#16283f;
+    --gold:#c9a227;
+    --gold-light:#e8cc7c;
+    --gold-deep:#9c7c1c;
+    --ivory:#f3ede0;
+    --ivory-2:#e9e0cb;
+    --ink:#1b1811;
+    --muted:#8a8271;
+    --line: rgba(243,237,224,0.14);
+    --line-navy: rgba(13,26,43,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:var(--navy);}
+  h1,h2,h3,.display{font-family:'Spectral',serif;font-weight:600;line-height:1.08;}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,26,43,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;color:var(--ivory);}
+  .nav-brand{display:flex;align-items:center;gap:12px;}
+  .nav-brand .crest-mini{width:36px;height:36px;}
+  .nav-brand .word{font-family:'Spectral',serif;font-size:18px;font-weight:600;letter-spacing:0.02em;color:var(--ivory);}
+  .nav-brand .word span{color:var(--gold-light);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ivory);opacity:0.72;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{border:1px solid var(--gold);color:var(--gold-light) !important;padding:10px 18px;opacity:1 !important;transition:background .2s,color .2s !important;}
+  .nav-cta:hover{background:var(--gold);color:var(--navy) !important;}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .nav-toggle span{width:22px;height:2px;background:var(--ivory);}
+
+  /* ---------- CREST (signature) ---------- */
+  .crest svg{width:100%;height:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--navy);color:var(--ivory);padding:150px 0 90px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 30%, rgba(201,162,39,0.14), transparent 60%);}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--gold-light);margin-bottom:22px;}
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold);}
+  .hero h1{font-size:clamp(40px,5.6vw,66px);color:var(--ivory);}
+  .hero h1 em{font-style:italic;color:var(--gold-light);}
+  .hero p.lede{margin-top:24px;font-size:16px;line-height:1.8;color:#cdd3dc;max-width:520px;font-weight:300;}
+  .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 26px;border:1px solid var(--gold);transition:background .2s,color .2s;}
+  .btn-gold:hover{background:transparent;color:var(--gold-light);}
+  .btn-line{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 26px;border:1px solid rgba(243,237,224,0.35);color:var(--ivory);transition:border-color .2s;}
+  .btn-line:hover{border-color:var(--gold-light);}
+  .hero-crest-wrap{display:flex;align-items:center;justify-content:center;position:relative;}
+  .hero-crest-wrap::before{content:"";position:absolute;width:300px;height:300px;background:radial-gradient(circle, rgba(201,162,39,0.18), transparent 70%);}
+  .crest-spin{animation:spin 60s linear infinite;transform-origin:center;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion:reduce){.crest-spin{animation:none;}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{overflow:hidden;background:var(--gold);border-top:1px solid var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding:14px 0;}
+  .marquee-track{display:flex;width:max-content;animation:mfwd 32s linear infinite;}
+  @keyframes mfwd{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+  .m-group{display:flex;align-items:center;}
+  .m-item{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy);padding:0 24px;white-space:nowrap;font-weight:600;}
+  .m-sep{color:var(--navy);opacity:0.5;font-size:12px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:100px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:54px;border-bottom:1.5px solid var(--line-navy);padding-bottom:26px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);}
+  .section-head .cap{max-width:300px;font-size:13.5px;color:var(--muted);line-height:1.7;padding-bottom:4px;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding-left:36px;}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line-navy);}
+  .tl-item{position:relative;padding-bottom:46px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:"";position:absolute;left:-36px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--ivory);box-shadow:0 0 0 1.5px var(--gold-deep);}
+  .tl-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-deep);letter-spacing:0.08em;}
+  .tl-item h3{font-size:22px;margin-top:8px;}
+  .tl-item p{font-size:14.5px;line-height:1.75;color:#453f33;margin-top:8px;max-width:560px;}
+
+  /* ---------- PILLARS ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-navy);border:1px solid var(--line-navy);}
+  .pillar{background:var(--ivory);padding:36px 30px;}
+  .pillar .pnum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-deep);}
+  .pillar h3{font-size:23px;margin-top:16px;}
+  .pillar p{font-size:14px;color:#453f33;margin-top:12px;line-height:1.7;}
+
+  /* ---------- MEETING CENTER (agenda mock) ---------- */
+  .agenda-section{background:var(--navy-soft);color:var(--ivory);}
+  .agenda-section .section-head{border-bottom-color:rgba(243,237,224,0.16);}
+  .agenda-section .section-head h2{color:var(--ivory);}
+  .agenda-section .cap{color:#aab2bf;}
+  .agenda-table{width:100%;border-collapse:collapse;}
+  .agenda-table th{
+    text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--gold-light);padding:0 0 14px;border-bottom:1px solid rgba(243,237,224,0.2);
+  }
+  .agenda-table td{padding:18px 0;border-bottom:1px solid rgba(243,237,224,0.1);font-size:14.5px;vertical-align:top;}
+  .agenda-table .time{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold-light);white-space:nowrap;}
+  .agenda-table .room{font-family:'JetBrains Mono',monospace;font-size:11px;color:#aab2bf;}
+  .agenda-note{margin-top:20px;font-size:12px;color:#8b93a1;font-family:'JetBrains Mono',monospace;}
+  .agenda-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- AFFILIATES MARQUEE ---------- */
+  .affiliates{background:var(--navy);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;}
+  .affiliates .marquee-track{animation:mrev 36s linear infinite;}
+  @keyframes mrev{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+  .affiliates .m-item{color:var(--ivory);font-family:'Spectral',serif;font-style:italic;font-size:19px;text-transform:none;letter-spacing:0;font-weight:400;}
+  .affiliates .m-sep{color:var(--gold-light);opacity:0.8;}
+
+  /* ---------- BLACK ORG STRIP ---------- */
+  .bo-strip{padding:54px 0;background:var(--ivory-2);}
+  .bo-strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .bo-strip .left{display:flex;align-items:center;gap:18px;}
+  .bo-mark{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:15px;color:var(--navy);}
+  .bo-strip h3{font-size:20px;}
+  .bo-strip p{font-size:13px;color:var(--muted);margin-top:3px;}
+  .bo-link{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1.5px solid var(--navy);padding-bottom:3px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:start;}
+  .contact-grid h2{font-size:clamp(32px,4.4vw,52px);}
+  .contact-grid .lede{font-size:15.5px;color:#453f33;line-height:1.8;margin-top:20px;max-width:470px;}
+  .info-row{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line-navy);}
+  .info-row:last-child{border-bottom:1px solid var(--line-navy);}
+  .info-row .label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);width:110px;flex-shrink:0;}
+  .info-row .val{font-size:14.5px;color:var(--ink);}
+  .founder-card{border:1.5px solid var(--navy);padding:30px;background:var(--navy);color:var(--ivory);}
+  .founder-card .mono{color:var(--gold-light);}
+  .founder-card h3{font-size:24px;margin-top:14px;}
+  .founder-card p{font-size:14px;color:#cdd3dc;margin-top:12px;line-height:1.75;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0;border-top:1px solid var(--line-navy);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .fmono{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
+  footer .flinks{display:flex;gap:22px;}
+  footer .flinks a{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);transition:color .2s;}
+  footer .flinks a:hover{color:var(--gold-deep);}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:920px){
+    .nav-links{position:fixed;top:69px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;justify-content:flex-start;padding:36px 32px;gap:26px;transform:translateX(100%);transition:transform .3s ease;}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{font-size:13px;opacity:1;}
+    .nav-toggle{display:flex;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-crest-wrap{order:-1;max-width:220px;margin:0 auto;}
+    .pillars{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .section-head{flex-direction:column;align-items:flex-start;}
+    .agenda-table{font-size:13px;}
+  }
+  @media (max-width:560px){
+    .agenda-table th:nth-child(3), .agenda-table td:nth-child(3){display:none;}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="nav-brand">
+      <span class="crest-mini crest">
+        <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#c9a227" stroke-width="1.5"/><circle cx="30" cy="30" r="20" fill="none" stroke="#c9a227" stroke-width="1"/><text x="30" y="36" text-anchor="middle" font-family="Spectral, serif" font-weight="700" font-size="15" fill="#c9a227">GE</text></svg>
+      </span>
+      <span class="word">Golden Empire <span>International</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#history">History</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#meeting-center">Meeting Center</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="#contact">Request Access</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow mono">Formerly The Headquarters — Restructured 2026</div>
+        <h1>Golden Empire <em>International</em></h1>
+        <p class="lede">Once the overall headquarters, Golden Empire International is now Black Organization's central meeting center — the strategic hub where staff across every subsidiary gather to decide, plan, and discuss.</p>
+        <div class="hero-ctas">
+          <a href="#history" class="btn-gold">Our History</a>
+          <a href="#meeting-center" class="btn-line">Meeting Center</a>
+        </div>
+      </div>
+      <div class="hero-crest-wrap">
+        <div class="crest" style="width:220px;height:220px;">
+          <svg viewBox="0 0 220 220" class="crest-spin">
+            <circle cx="110" cy="110" r="100" fill="none" stroke="#c9a227" stroke-width="1.2"/>
+            <circle cx="110" cy="110" r="82" fill="none" stroke="#e8cc7c" stroke-width="0.8"/>
+            <path d="M 40,110 a70,70 0 0,1 140,0" fill="none" stroke="#c9a227" stroke-width="1"/>
+            <path d="M 40,110 a70,70 0 0,0 140,0" fill="none" stroke="#c9a227" stroke-width="1"/>
+            <text font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="3" fill="#e8cc7c">
+              <textPath href="#geiCirc" startOffset="0%">GOLDEN EMPIRE INTERNATIONAL • EST. •</textPath>
+            </text>
+            <defs><path id="geiCirc" d="M 110,110 m -91,0 a 91,91 0 1,1 182,0 a 91,91 0 1,1 -182,0"/></defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="m-group">
+        <span class="m-item">Strategic Hub</span><span class="m-sep">✦</span>
+        <span class="m-item">Decision-Making</span><span class="m-sep">✦</span>
+        <span class="m-item">Planning</span><span class="m-sep">✦</span>
+        <span class="m-item">Corporate Discussions</span><span class="m-sep">✦</span>
+        <span class="m-item">Restructured 2026</span><span class="m-sep">✦</span>
+      </div>
+      <div class="m-group">
+        <span class="m-item">Strategic Hub</span><span class="m-sep">✦</span>
+        <span class="m-item">Decision-Making</span><span class="m-sep">✦</span>
+        <span class="m-item">Planning</span><span class="m-sep">✦</span>
+        <span class="m-item">Corporate Discussions</span><span class="m-sep">✦</span>
+        <span class="m-item">Restructured 2026</span><span class="m-sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HISTORY / TIMELINE ================= -->
+  <section id="history">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono" style="color:var(--gold-deep)">Our History</div>
+          <h2>From Headquarters<br>to Meeting Center</h2>
+        </div>
+        <p class="cap">Golden Empire International's role changed in 2026 — its address in the organization didn't.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-year">Founding</div>
+          <h3>Golden Empire International</h3>
+          <p>Founded by CT Black as the overall headquarters — the single address every part of the organization operated under.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Operating Years</div>
+          <h3>The Overall Headquarters</h3>
+          <p>Golden Empire International served as the seat of the organization, housing leadership and coordinating every division under one name.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <h3>Restructuring</h3>
+          <p>The organization restructured under a new name — Black Organization — with each division formalized as its own subsidiary.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026 — Present</div>
+          <h3>Central Meeting Center</h3>
+          <p>Golden Empire International was repurposed as Black Organization's central meeting center — the strategic hub where staff across every subsidiary meet to decide, plan, and discuss.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PURPOSE ================= -->
+  <section id="purpose" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono" style="color:var(--gold-deep)">What Happens Here</div>
+          <h2>Purpose</h2>
+        </div>
+        <p class="cap">Three functions, one address — every subsidiary passes through here at some point.</p>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="pnum mono">01</div>
+          <h3>Decision-Making</h3>
+          <p>Where leadership across Black Organization's subsidiaries convenes to make the calls that shape the group.</p>
+        </div>
+        <div class="pillar">
+          <div class="pnum mono">02</div>
+          <h3>Planning</h3>
+          <p>Roadmaps, launches, and cross-subsidiary initiatives are mapped out here before they reach any individual company.</p>
+        </div>
+        <div class="pillar">
+          <div class="pnum mono">03</div>
+          <h3>Corporate Discussions</h3>
+          <p>The neutral ground where Creative Academy, Designwurld, OworldTech, and every other subsidiary talk to each other.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEETING CENTER ================= -->
+  <section id="meeting-center" class="agenda-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow mono" style="color:var(--gold-light)">The Meeting Center</div>
+          <h2>Today at Golden Empire</h2>
+        </div>
+        <p class="cap">An illustrative look at how the space is used — actual scheduling runs through Black Organization's internal calendar.</p>
+      </div>
+      <div class="reveal">
+        <table class="agenda-table">
+          <thead><tr><th>Time</th><th>Session</th><th>Room</th></tr></thead>
+          <tbody>
+            <tr><td class="time">09:00</td><td>Subsidiary Leads — Weekly Sync</td><td class="room">Boardroom A</td></tr>
+            <tr><td class="time">11:30</td><td>Creative Academy × Designwurld — Cross-Brief</td><td class="room">Studio Room</td></tr>
+            <tr><td class="time">14:00</td><td>Black Organization — Strategic Planning</td><td class="room">Boardroom A</td></tr>
+            <tr><td class="time">16:00</td><td>OworldTech — Platform Review</td><td class="room">Meeting Room 2</td></tr>
+          </tbody>
+        </table>
+        <div class="agenda-note">Sample agenda for illustration — not a live schedule.</div>
+        <div class="agenda-cta">
+          <a href="#contact" class="btn-gold">Request a Room</a>
+          <a href="#contact" class="btn-line">Contact the Center</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AFFILIATES MARQUEE ================= -->
+  <div class="affiliates">
+    <div class="marquee-track">
+      <div class="m-group">
+        <span class="m-item">Creative Academy</span><span class="m-sep">•</span>
+        <span class="m-item">Designwurld</span><span class="m-sep">•</span>
+        <span class="m-item">OworldTech</span><span class="m-sep">•</span>
+        <span class="m-item">Black Wears</span><span class="m-sep">•</span>
+        <span class="m-item">Gem Universal Studio</span><span class="m-sep">•</span>
+        <span class="m-item">GemWash Laundry</span><span class="m-sep">•</span>
+      </div>
+      <div class="m-group">
+        <span class="m-item">Creative Academy</span><span class="m-sep">•</span>
+        <span class="m-item">Designwurld</span><span class="m-sep">•</span>
+        <span class="m-item">OworldTech</span><span class="m-sep">•</span>
+        <span class="m-item">Black Wears</span><span class="m-sep">•</span>
+        <span class="m-item">Gem Universal Studio</span><span class="m-sep">•</span>
+        <span class="m-item">GemWash Laundry</span><span class="m-sep">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= BLACK ORG STRIP ================= -->
+  <div class="bo-strip">
+    <div class="wrap">
+      <div class="left">
+        <div class="bo-mark">BO</div>
+        <div>
+          <h3>Part of Black Organization</h3>
+          <p>Founded by CT BLACK — One Mind. One Vision. One World.</p>
+        </div>
+      </div>
+      <a class="bo-link" href="#top">Explore the Group ↗</a>
+    </div>
+  </div>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="eyebrow mono" style="color:var(--gold-deep)">Get In Touch</div>
+        <h2>Reach the<br>Meeting Center.</h2>
+        <p class="lede">For room requests, cross-subsidiary meetings, or general inquiries into Golden Empire International's role within Black Organization.</p>
+        <div class="info-row"><div class="label">Email</div><div class="val">blackorganizationctblack@gmail.com</div></div>
+        <div class="info-row"><div class="label">Phone</div><div class="val">+234 915 053 8752</div></div>
+        <div class="info-row"><div class="label">Address</div><div class="val">Road 10, Atlantic Garden Estate, General Paints, Lekki-Epe Expressway, Lagos, Nigeria</div></div>
+      </div>
+      <div class="founder-card reveal">
+        <div class="mono">Founded By</div>
+        <h3>CT Black</h3>
+        <p>Founder of Black Organization and, originally, Golden Empire International itself. Golden Empire's shift from headquarters to meeting center reflects the same restructuring that formalized every subsidiary — Creative Academy, Designwurld, OworldTech, Black Wears, Gem Universal Studio, and GemWash — under the Black Organization name.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fmono">© <span id="year"></span> GOLDEN EMPIRE INTERNATIONAL — CENTRAL MEETING CENTER OF BLACK ORGANIZATION</span>
+    <div class="flinks">
+      <a href="#history">History</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#meeting-center">Meeting Center</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+
+<script>
+(function () {
+  if (window.__BLACK_ORG_AI_EMBED__) return;
+  window.__BLACK_ORG_AI_EMBED__ = true;
+  const CONFIG = { botUrl: 'https://black-organization.ai/bot', position: 'bottom-right', theme: 'black-gold', organization: 'BLACK ORGANIZATION' };
+  const style = document.createElement('style');
+  style.textContent = `
+    #black-ai-bubble{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border-radius:50%;background:#0a0a0a;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2147483647;box-shadow:0 10px 30px rgba(0,0,0,.28);} #black-ai-bubble:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 16px 38px rgba(212,175,55,.38);} #black-ai-bubble img{width:36px;height:36px;object-fit:contain;display:block;} #black-ai-frame-wrap{position:fixed;right:24px;bottom:100px;width:420px;height:640px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);background:#fff;border:1px solid #D4AF37;border-radius:20px;overflow:hidden;display:none;z-index:2147483647;box-shadow:0 30px 70px rgba(0,0,0,.25);} #black-ai-frame-wrap.open{display:block;animation:blackSlide .28s ease;} #black-ai-frame{width:100%;height:100%;border:0;} @keyframes blackSlide{from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);}} #black-ai-header{height:46px;background:#0a0a0a;color:#D4AF37;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;} #black-ai-close{cursor:pointer;font-size:22px;line-height:1;} @media(max-width:480px){#black-ai-frame-wrap{width:100vw;height:100vh;right:0;left:0;bottom:0;border-radius:0;max-width:100vw;max-height:100vh;}}
+  `;
+  document.head.appendChild(style);
+  const bubble = document.createElement('div');
+  bubble.id = 'black-ai-bubble';
+  bubble.innerHTML = '<img src="https://cdn.fbsbx.com/v/t65.102178-21/774265991_1532109481443121_9009376856195502772_n.jpg/black_logo_05_app_icon.png" alt="BLACK AI"><span style="position:absolute;top:-3px;right:-3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a;"></span>';
+  const wrap = document.createElement('div');
+  wrap.id = 'black-ai-frame-wrap';
+  wrap.innerHTML = `
+    <div id="black-ai-header">
+      <span>BLACK ORGANIZATION AI</span>
+      <span id="black-ai-close">Ã—</span>
+    </div>
+    <iframe id="black-ai-frame" src="${CONFIG.botUrl}" allow="microphone; clipboard-read; clipboard-write"></iframe>
+  `;
+  bubble.addEventListener('click', () => wrap.classList.add('open'));
+  const closeButton = wrap.querySelector('#black-ai-close');
+  if (closeButton) closeButton.addEventListener('click', () => wrap.classList.remove('open'));
+  document.body.appendChild(bubble);
+  document.body.appendChild(wrap);
+  window.BLACK_AI = { open: () => wrap.classList.add('open'), close: () => wrap.classList.remove('open'), config: CONFIG };
+})();
+</script>
+
+
+<div class="bo-network-bar" style="position:fixed;left:16px;right:16px;bottom:12px;z-index:2147483646;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;background:rgba(10,9,4,.92);color:#f3ede0;border:1px solid rgba(201,162,39,.45);box-shadow:0 10px 28px rgba(0,0,0,.16);font:600 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:10px 14px;">
+  <span>BLACK ORGANIZATION</span>
+  <a href="blackorganization.html" style="color:#e8cc7c;text-decoration:none;">Home</a>
+  <a href="allinfo.html" style="color:#e8cc7c;text-decoration:none;">Directory</a>
+  <a href="register.html" style="color:#e8cc7c;text-decoration:none;">Register</a>
+</div>
+
+</body>
+</html>
