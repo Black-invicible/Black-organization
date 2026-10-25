@@ -1,7 +1,8 @@
 {
-  "name": "black-organization-backend",
+  "name": "black-organization",
   "version": "1.0.0",
-  "description": "Node.js backend for Black Organization with SQLite database support.",
+  "private": true,
+  "description": "Production-ready backend and admin dashboard for Black Organization.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -14,9 +15,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "sqlite3": "^5.1.7"
+    "helmet": "^7.1.0",
+    "mongoose": "^8.8.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.1.0"
   }
 }

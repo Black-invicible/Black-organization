@@ -1,54 +1,67 @@
 # Black Organization
 
-A full community and nonprofit-style website for Black Organization, including:
+This project is a full-stack business website and backend for Black Organization, built with Express and MongoDB.
 
-- Landing page with mission and impact sections
-- Multi-page navigation
-- Volunteer and donation forms
-- Contact form with backend persistence
-- SQLite database storage
-- Admin dashboard to view saved records
-- Express server to serve the site and API
+## Features
 
-## Project Structure
+- Live Express server for the website and API
+- MongoDB-backed data storage for registrations, contact messages, company records, volunteers, and donations
+- Admin dashboard showing count totals and full saved record tables
+- Static HTML pages served from the repo root and `public/` folder
+- Production-ready setup using environment variables and a health endpoint
 
-- `server.js` — Express server and API endpoints
-- `db.js` — SQLite schema and database helpers
-- `routes/` — API route modules for companies and registrations
-- `public/` — static website pages and frontend assets
-- `data/black_org.db` — SQLite database created at runtime
+## Project structure
 
-## Getting started
+- `server.js` — app entry point and server configuration
+- `routes/` — API routes for registration and company data
+- `models/` — MongoDB schemas and models
+- `public/` — frontend pages and shared scripts
+- `blackorganization.html` — main landing page
+- `register.html` — membership registration page
+
+## Local setup
 
 1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app:
+2. Create your environment file from the example:
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Update `MONGODB_URI` in `.env` for your MongoDB instance.
+
+4. Start the app:
    ```bash
    npm start
    ```
 
-3. Open the website in a browser:
-   ```text
-   http://localhost:5000
-   ```
+5. Open the app in a browser:
+   - Home: `http://localhost:5000/`
+   - Register: `http://localhost:5000/register`
+   - Admin: `http://localhost:5000/admin`
 
-4. View the admin dashboard:
-   ```text
-   http://localhost:5000/admin
-   ```
+## Production deployment
 
-## Features
+For deployment on Render, Railway, Fly.io, or a Node host, set:
 
-- Responsive dark-themed design
-- Contact form submissions saved to SQLite
-- Volunteer interest tracking
-- Donation record storage
-- Administration dashboard for overview statistics
-- Company catalog API
+- `PORT`
+- `NODE_ENV=production`
+- `MONGODB_URI`
 
-## Deployment
+Use MongoDB Atlas or another managed MongoDB service for the database.
 
-This app is ready to be deployed on platforms like Render, Railway, Fly.io, or any Node.js hosting provider.
+## API endpoints
+
+- `GET /health`
+- `GET /api/stats`
+- `GET /api/admin`
+- `GET /api/companies`
+- `POST /api/companies`
+- `GET /api/registrations`
+- `POST /api/registrations`
+- `POST /api/contact`
+- `POST /api/volunteer`
+- `POST /api/donations`

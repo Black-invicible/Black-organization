@@ -1,18 +1,18 @@
 const express = require('express');
-const { listCompanies } = require('../db');
+const { Company } = require('../models');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/companies', async (req, res) => {
   try {
-    const companies = await listCompanies();
+    const companies = await Company.find().sort({ createdAt: -1 });
     res.json(companies);
   } catch (error) {
     res.status(500).json({ message: 'Unable to load companies.', error: error.message });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/companies', async (req, res) => {
   try {
     const { name, category, description, website } = req.body || {};
 
@@ -20,12 +20,14 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'Company name is required.' });
     }
 
-    const result = await require('../db').run(
-      'INSERT INTO companies (name, category, description, website) VALUES (?, ?, ?, ?)',
-      [name, category || '', description || '', website || '']
-    );
+    const company = await Company.create({
+      name,
+      category: category || '',
+      description: description || '',
+      website: website || '',
+    });
 
-    res.status(201).json({ id: result.id, name, category, description, website });
+    res.status(201).json(company);
   } catch (error) {
     res.status(500).json({ message: 'Unable to save company.', error: error.message });
   }
