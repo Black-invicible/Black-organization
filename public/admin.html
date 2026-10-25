@@ -1,172 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Black Organization</title>
-    <meta name="description" content="Connect with Black Organization. Get involved, ask questions, and support the mission." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a class="brand" href="/">
-          <span class="brand-mark">B</span>
-          <span>Black Organization</span>
-        </a>
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('form[data-form-type]');
 
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/programs">Programs</a>
-          <a href="/contact">Contact</a>
-          <a href="/admin">Admin</a>
-        </nav>
+  forms.forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-        <a class="button button-primary" href="/contact">Join the Movement</a>
-      </div>
-    </header>
+      const type = form.dataset.formType;
+      const status = document.getElementById(`${type}Status`);
+      const submitButton = form.querySelector('button[type="submit"]');
+      const payload = Object.fromEntries(new FormData(form).entries());
 
-    <main>
-      <section class="page-hero section-dark">
-        <div class="container narrow">
-          <p class="eyebrow">CONTACT</p>
-          <h1>Let’s build something powerful together.</h1>
-        </div>
-      </section>
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Saving...';
+      }
 
-      <section class="section light">
-        <div class="container contact-grid">
-          <div class="contact-panel">
-            <h2>Send a message</h2>
-            <form id="contactForm" data-form-type="contact">
-              <div class="form-grid">
-                <label>
-                  Name
-                  <input type="text" name="name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" name="email" required />
-                </label>
-                <label>
-                  Phone
-                  <input type="tel" name="phone" />
-                </label>
-              </div>
+      if (status) {
+        status.textContent = 'Saving...';
+        status.className = 'form-status';
+      }
 
-              <label>
-                Message
-                <textarea name="message" rows="6" required></textarea>
-              </label>
+      try {
+        const endpoint =
+          type === 'contact'
+            ? '/api/contact'
+            : type === 'volunteer'
+              ? '/api/volunteer'
+              : type === 'donation'
+                ? '/api/donations'
+                : '/api/registrations';
 
-              <button type="submit" class="button button-primary">Send Message</button>
-            </form>
-            <p id="contactStatus" class="form-status" aria-live="polite"></p>
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Request failed.');
+        }
+
+        if (status) {
+          status.textContent = data.message || 'Saved successfully.';
+          status.className = 'form-status success';
+        }
+
+        form.reset();
+      } catch (error) {
+        if (status) {
+          status.textContent = error.message || 'Something went wrong.';
+          status.className = 'form-status error';
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = form.dataset.formType === 'donation' ? 'Support the Cause' : form.dataset.formType === 'volunteer' ? 'Join as Volunteer' : form.dataset.formType === 'contact' ? 'Send Message' : 'Register Now';
+        }
+      }
+    });
+  });
+
+  const dashboard = document.getElementById('dashboardStats');
+  if (dashboard) {
+    fetch('/api/stats')
+      .then((response) => response.json())
+      .then((stats) => {
+        dashboard.innerHTML = `
+          <div class="admin-card">
+            <span>Registrations</span>
+            <strong>${stats.registrations || 0}</strong>
           </div>
-
-          <div class="contact-panel alt-panel">
-            <h2>Volunteer with us</h2>
-            <form id="volunteerForm" data-form-type="volunteer">
-              <label>
-                Full Name
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" required />
-              </label>
-              <label>
-                Area of focus
-                <select name="focus" required>
-                  <option value="">Select</option>
-                  <option>Youth leadership</option>
-                  <option>Programs & events</option>
-                  <option>Fundraising</option>
-                  <option>Business support</option>
-                  <option>Community outreach</option>
-                </select>
-              </label>
-              <label>
-                How would you like to contribute?
-                <textarea name="interest" rows="4" required></textarea>
-              </label>
-              <button type="submit" class="button button-primary">Join as Volunteer</button>
-            </form>
-            <p id="volunteerStatus" class="form-status" aria-live="polite"></p>
+          <div class="admin-card">
+            <span>Messages</span>
+            <strong>${stats.contacts || 0}</strong>
           </div>
-        </div>
-      </section>
-
-      <section class="section dark-alt">
-        <div class="container donation-wrap">
-          <div class="section-heading left">
-            <p class="eyebrow">SUPPORT THE MISSION</p>
-            <h2>Help fund programs that transform lives.</h2>
+          <div class="admin-card">
+            <span>Volunteers</span>
+            <strong>${stats.volunteers || 0}</strong>
           </div>
-
-          <form id="donationForm" class="donation-form" data-form-type="donation">
-            <div class="form-grid">
-              <label>
-                Name
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" required />
-              </label>
-              <label>
-                Amount
-                <input type="number" name="amount" min="10" step="10" required />
-              </label>
-              <label>
-                Purpose
-                <input type="text" name="purpose" placeholder="Youth programs, business support, general fund" required />
-              </label>
-            </div>
-            <button type="submit" class="button button-primary">Support the Cause</button>
-          </form>
-          <p id="donationStatus" class="form-status" aria-live="polite"></p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/">
-            <span class="brand-mark">B</span>
-            <span>Black Organization</span>
-          </a>
-          <p>Building empowered communities through leadership, opportunity, and care.</p>
-        </div>
-
-        <div>
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/programs">Programs</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="mailto:hello@blackorganization.org">hello@blackorganization.org</a></li>
-            <li><a href="tel:+1234567890">(123) 456-7890</a></li>
-            <li>Atlanta, GA</li>
-          </ul>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <p>© 2026 Black Organization. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <script src="/script.js"></script>
-  </body>
-</html>
+          <div class="admin-card">
+            <span>Donations</span>
+            <strong>${stats.donations || 0}</strong>
+          </div>
+        `;
+      })
+      .catch(() => {
+        dashboard.innerHTML = '<div class="admin-card"><span>Stats</span><strong>Unavailable</strong></div>';
+      });
+  }
+});
