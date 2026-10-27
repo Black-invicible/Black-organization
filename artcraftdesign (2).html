@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art, Craft & Design | Black Organization</title>
+  <meta name="description" content="Black Organization Art, Craft & Design gallery. View creative work, like designs, and contact us on WhatsApp." />
+  <style>
+    :root {
+      --black: #0a0904;
+      --panel: #141210;
+      --panel-2: #1b1815;
+      --ivory: #f3ede0;
+      --gold: #c9a227;
+      --gold-light: #e8cc7c;
+      --gold-deep: #9c7c1c;
+      --muted: #8a8271;
+      --line: rgba(243, 237, 224, 0.15);
+      --line-strong: rgba(243, 237, 224, 0.26);
+      --success: #d4af37;
+      --danger: #ff7b72;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(201,162,39,0.12), transparent 30%),
+        linear-gradient(180deg, #0a0904 0%, #11100d 100%);
+      color: var(--ivory);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10,9,4,0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--ivory);
+      opacity: 0.8;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-shell {
+      background: linear-gradient(135deg, rgba(20,18,16,0.96), rgba(27,24,21,0.96));
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      padding: 36px 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold-light);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .gold-text {
+      background: linear-gradient(120deg, var(--gold-light), var(--gold), var(--gold-deep));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtext {
+      max-width: 720px;
+      font-size: 1.02rem;
+      color: #d9d3c5;
+      margin-top: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line-strong);
+      color: var(--ivory);
+      background: transparent;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .admin-panel {
+      display: none;
+      margin-top: 28px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .admin-panel.open {
+      display: block;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--ivory);
+      padding: 12px 14px;
+      font: inherit;
+      resize: vertical;
+    }
+
+    .field textarea {
+      min-height: 120px;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 32px 0 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-header h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding: 16px 0 64px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(20,18,16,0.95), rgba(30,27,24,0.95));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,162,39,0.7);
+    }
+
+    .card-image {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-info {
+      padding: 18px 18px 20px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(201,162,39,0.12);
+      border: 1px solid rgba(201,162,39,0.4);
+      color: var(--gold-light);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+      line-height: 1.18;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      color: #d0c7b6;
+      font-size: 0.96rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-button {
+      flex: 1 1 120px;
+      min-height: 42px;
+      border-radius: 10px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.02);
+      color: var(--ivory);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .mini-button.like {
+      border-color: rgba(201,162,39,0.4);
+      color: var(--gold-light);
+    }
+
+    .mini-button.whatsapp {
+      background: linear-gradient(135deg, #1db954, #0ea5e9);
+      border-color: transparent;
+      color: white;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      background: rgba(201,162,39,0.12);
+      border: 1px solid rgba(201,162,39,0.55);
+      color: var(--ivory);
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s ease;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: 0 18px 38px rgba(37,211,102,0.42);
+      z-index: 40;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 920px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 16px 0;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-shell {
+        padding: 26px 20px;
+      }
+      .header-cta {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="blackorganization.html">
+        <span class="brand-mark">BO</span>
+        <span>Black Organization</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="blackorganization.html">Home</a>
+        <a href="allinfo.html">Directory</a>
+        <a href="register.html">Register</a>
+      </div>
+
+      <a class="header-cta" href="https://wa.me/2349150538752?text=Hello%20Black%20Organization%2C%20I%20want%20to%20learn%20more%20about%20your%20designs." target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-shell">
+        <div class="eyebrow">Art • Craft • Design</div>
+        <h1><span class="gold-text">Design Gallery</span></h1>
+        <p class="subtext">
+          Browse the latest Black Organization creative work, discover standout visual pieces, show love to the designs you connect with, and contact the team directly on WhatsApp for more information.
+        </p>
+
+        <div class="hero-actions">
+          <button class="button primary" id="toggleAdmin">Admin Upload</button>
+          <a class="button" href="https://wa.me/2349150538752?text=Hello%20Black%20Organization%2C%20I%20would%20like%20to%20request%20a%20design%20or%20custom%20work." target="_blank" rel="noreferrer">Message Us</a>
+        </div>
+
+        <div class="admin-panel" id="adminPanel">
+          <div class="field" style="margin-bottom: 12px;">
+            <label for="adminPassword">Admin Access</label>
+            <input id="adminPassword" type="password" placeholder="Enter admin password" />
+          </div>
+
+          <div id="adminFormWrapper" class="hidden">
+            <form id="designForm">
+              <div class="admin-grid">
+                <div class="field">
+                  <label for="designTitle">Design Title</label>
+                  <input id="designTitle" type="text" placeholder="e.g. Royal Gold Collection" required />
+                </div>
+
+                <div class="field">
+                  <label for="designCategory">Category</label>
+                  <select id="designCategory">
+                    <option>Fashion</option>
+                    <option>Branding</option>
+                    <option>Poster</option>
+                    <option>Art</option>
+                    <option>Packaging</option>
+                    <option>Print</option>
+                  </select>
+                </div>
+
+                <div class="field" style="grid-column: 1 / -1;">
+                  <label for="designImage">Image URL</label>
+                  <input id="designImage" type="url" placeholder="https://example.com/design.jpg" required />
+                </div>
+
+                <div class="field" style="grid-column: 1 / -1;">
+                  <label for="designDescription">Design Description</label>
+                  <textarea id="designDescription" placeholder="Describe the design concept, mood, and use case." required></textarea>
+                </div>
+              </div>
+
+              <div class="hero-actions" style="margin-top: 20px;">
+                <button class="button primary" type="submit">Post Design</button>
+                <button class="button" type="button" id="cancelAdmin">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="gallery-header">
+        <h2>Featured Designs</h2>
+        <span class="pill" id="galleryCount">0 pieces</span>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+  </main>
+
+  <a class="floating-wa" href="https://wa.me/2349150538752?text=Hello%20Black%20Organization%2C%20I%20want%20to%20know%20more%20about%20your%20designs." target="_blank" rel="noreferrer" aria-label="WhatsApp">WA</a>
+
+  <div class="toast" id="toast">Design liked.</div>
+
+  <script>
+    const defaultDesigns = [
+      {
+        title: 'Royal Gold Collection',
+        category: 'Fashion',
+        description: 'Luxury-forward fashion concept, crafted to reflect status, confidence, and elegance.',
+        image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+        likes: 42
+      },
+      {
+        title: 'Black Empire Poster',
+        category: 'Branding',
+        description: 'A bold identity concept blending premium gold accents with elite brand positioning.',
+        image: 'https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80',
+        likes: 38
+      },
+      {
+        title: 'Signature Craft Moodboard',
+        category: 'Art',
+        description: 'A visual board for creativity, craftsmanship, and premium storytelling in one frame.',
+        image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
+        likes: 54
+      },
+      {
+        title: 'Luxury Packaging Mockup',
+        category: 'Packaging',
+        description: 'A premium packaging presentation for products designed to feel rich, modern, and memorable.',
+        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80',
+        likes: 31
+      },
+      {
+        title: 'Motion Poster Concept',
+        category: 'Poster',
+        description: 'High-impact campaign art designed to instantly communicate energy, movement, and vision.',
+        image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80',
+        likes: 47
+      },
+      {
+        title: 'Creative Studio Vision',
+        category: 'Print',
+        description: 'Creative direction for an artistic studio with bold contrast, refined typography, and premium presentation.',
+        image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80',
+        likes: 61
+      }
+    ];
+
+    const storageKey = 'black-org-design-gallery';
+
+    function loadGallery() {
+      const saved = localStorage.getItem(storageKey);
+      if (!saved) {
+        localStorage.setItem(storageKey, JSON.stringify(defaultDesigns));
+        return [...defaultDesigns];
+      }
+
+      try {
+        const parsed = JSON.parse(saved);
+        return Array.isArray(parsed) && parsed.length ? parsed : [...defaultDesigns];
+      } catch (error) {
+        return [...defaultDesigns];
+      }
+    }
+
+    let gallery = loadGallery();
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    const galleryCount = document.getElementById('galleryCount');
+    const adminPanel = document.getElementById('adminPanel');
+    const toggleAdmin = document.getElementById('toggleAdmin');
+    const adminPassword = document.getElementById('adminPassword');
+    const adminFormWrapper = document.getElementById('adminFormWrapper');
+    const designForm = document.getElementById('designForm');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function saveGallery() {
+      localStorage.setItem(storageKey, JSON.stringify(gallery));
+    }
+
+    function renderGallery() {
+      galleryGrid.innerHTML = gallery.map((item, index) => `
+        <article class="card">
+          <div class="card-image" style="background-image: url('${item.image}')"></div>
+          <div class="card-info">
+            <div class="card-top">
+              <span class="pill">${item.category}</span>
+              <span style="color: var(--gold-light); font-size: 12px; font-weight: 700;">❤ ${item.likes}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <div class="card-actions">
+              <button class="mini-button like" data-index="${index}" type="button">Like</button>
+              <a class="mini-button whatsapp" href="https://wa.me/2349150538752?text=${encodeURIComponent('Hello Black Organization, I am interested in the design: ' + item.title + '. Please send more information.') }" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      galleryCount.textContent = `${gallery.length} piece${gallery.length > 1 ? 's' : ''}`;
+    }
+
+    toggleAdmin.addEventListener('click', () => {
+      const open = adminPanel.classList.contains('open');
+      adminPanel.classList.toggle('open', !open);
+      if (!open) {
+        adminPassword.focus();
+      }
+    });
+
+    adminPassword.addEventListener('input', () => {
+      const value = adminPassword.value.trim();
+      const pass = 'BOADMIN2026';
+      adminFormWrapper.classList.toggle('hidden', value !== pass);
+    });
+
+    document.getElementById('cancelAdmin').addEventListener('click', () => {
+      adminPanel.classList.remove('open');
+      adminPassword.value = '';
+      adminFormWrapper.classList.add('hidden');
+    });
+
+    designForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const title = document.getElementById('designTitle').value.trim();
+      const category = document.getElementById('designCategory').value;
+      const image = document.getElementById('designImage').value.trim();
+      const description = document.getElementById('designDescription').value.trim();
+
+      if (!title || !image || !description) return;
+
+      gallery.unshift({
+        title,
+        category,
+        description,
+        image,
+        likes: 0
+      });
+
+      saveGallery();
+      renderGallery();
+      designForm.reset();
+      adminPassword.value = '';
+      adminFormWrapper.classList.add('hidden');
+      adminPanel.classList.remove('open');
+      showToast('Design posted successfully.');
+    });
+
+    galleryGrid.addEventListener('click', (event) => {
+      const button = event.target.closest('.like');
+      if (!button) return;
+
+      const index = Number(button.dataset.index);
+      if (Number.isNaN(index)) return;
+
+      gallery[index].likes += 1;
+      saveGallery();
+      renderGallery();
+      showToast('Design liked.');
+    });
+
+    renderGallery();
+  </script>
+</body>
+</html>
