@@ -1,106 +1,78 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
-const dotenv = require('dotenv');
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Black Organization</title>
+    <meta name="description" content="Contact Black Organization to learn more about our leadership, community, education, and support programs for Black communities." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://blackorganization.org/contact" />
+    <meta property="og:title" content="Contact | Black Organization" />
+    <meta property="og:description" content="Connect with Black Organization to get involved, ask questions, or support our community mission." />
+    <meta property="og:url" content="https://blackorganization.org/contact" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="/">
+          <span class="brand-mark">B</span>
+          <span>Black Organization</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/programs">Programs</a>
+          <a href="/contact">Contact</a>
+          <a href="/register">Register</a>
+        </nav>
+        <a class="button button-primary" href="/register">Join the Movement</a>
+      </div>
+    </header>
 
-dotenv.config();
+    <main>
+      <section class="page-hero section-dark">
+        <div class="container narrow">
+          <p class="eyebrow">CONTACT</p>
+          <h1>Let’s build stronger communities together.</h1>
+        </div>
+      </section>
+    </main>
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || '';
-const rootDir = __dirname;
-const publicDir = path.join(rootDir, 'public');
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="/">
+            <span class="brand-mark">B</span>
+            <span>Black Organization</span>
+          </a>
+          <p>Building empowered communities through leadership, opportunity, and care.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/programs">Programs</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="mailto:hello@blackorganization.org">hello@blackorganization.org</a></li>
+            <li><a href="tel:+1234567890">(123) 456-7890</a></li>
+            <li>Atlanta, GA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2026 Black Organization. All rights reserved.</p>
+      </div>
+    </footer>
 
-app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json({ limit: '5mb' }));
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
-
-function injectSiteScript(html) {
-  if (!html || html.includes('/site.js')) return html;
-  return html.replace(/<\/body>/i, '<script src="/site.js"></script>\n</body>');
-}
-
-app.use((req, res, next) => {
-  if (req.path.startsWith('/api')) return next();
-  if (!req.path.endsWith('.html')) return next();
-
-  const relativePath = req.path.startsWith('/public/')
-    ? req.path.replace(/^\/public\//, '')
-    : req.path.replace(/^\//, '');
-
-  const filePath = path.join(rootDir, req.path.startsWith('/public/') ? 'public' : '', relativePath);
-
-  if (!fs.existsSync(filePath)) return next();
-
-  const html = fs.readFileSync(filePath, 'utf8');
-  return res.send(injectSiteScript(html));
-});
-
-app.use(express.static(publicDir));
-app.use(express.static(rootDir));
-
-const companyRoutes = require('./routes/companies');
-const registrationRoutes = require('./routes/registrations');
-
-app.use('/api', companyRoutes);
-app.use('/api', registrationRoutes);
-
-app.get('/health', (req, res) => {
-  res.json({ ok: true, status: 'healthy', service: 'black-organization' });
-});
-
-app.get('/', (req, res) => {
-  const homeFile = path.join(rootDir, 'blackorganization.html');
-  const html = fs.readFileSync(homeFile, 'utf8');
-  res.send(injectSiteScript(html));
-});
-
-app.get('/register', (req, res) => {
-  const registerFile = path.join(rootDir, 'register.html');
-  const html = fs.readFileSync(registerFile, 'utf8');
-  res.send(injectSiteScript(html));
-});
-
-app.get('/admin', (req, res) => {
-  const adminFile = path.join(publicDir, 'admin.html');
-  const html = fs.readFileSync(adminFile, 'utf8');
-  res.send(injectSiteScript(html));
-});
-
-async function connectToMongo() {
-  if (!MONGODB_URI) {
-    console.warn('Missing MONGODB_URI in environment. Add it to .env or your hosting settings.');
-    return false;
-  }
-
-  try {
-    await mongoose.connect(MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 20000,
-      autoIndex: true,
-    });
-
-    console.log('Connected to MongoDB successfully.');
-    return true;
-  } catch (error) {
-    console.error('MongoDB connection failed:', error.message || error);
-    console.warn('Server will still start in degraded mode; database-backed routes will fail until MongoDB is available.');
-    return false;
-  }
-}
-
-async function startServer() {
-  await connectToMongo();
-
-  app.listen(PORT, () => {
-    console.log(`Black Organization server running at http://localhost:${PORT}`);
-  });
-}
-
-startServer();
+    <script src="/script.js"></script>
+  </body>
+</html>

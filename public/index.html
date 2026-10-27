@@ -1,52 +1,59 @@
-# Black Organization
-
-A full community and nonprofit-style website for Black Organization, including:
-
-- Landing page with mission and impact sections
-- Multi-page navigation
-- Volunteer and donation forms
-- Contact form with backend persistence
-- SQLite database storage
-- Admin dashboard to view saved records
-- Express server to serve the site and API
-
-## Project Structure
-
-- `server.js` — Express server and API endpoints
-- `db.js` — SQLite schema and database helpers
-- `public/` — static website pages and frontend assets
-- `data/black_org.db` — SQLite database created at runtime
-
-## Getting started
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Start the app:
-   ```bash
-   npm start
-   ```
-
-3. Open the website in a browser:
-   ```text
-   http://localhost:3000
-   ```
-
-4. View the admin dashboard:
-   ```text
-   http://localhost:3000/admin
-   ```
-
-## Features
-
-- Responsive dark-themed design
-- Contact form submissions saved to SQLite
-- Volunteer interest tracking
-- Donation record storage
-- API endpoints for stats and dashboard data
-
-## Deployment
-
-This app is ready to be deployed on platforms like Render, Railway, Fly.io, or any Node.js hosting provider.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=./public/index.html" />
+    <meta name="robots" content="index, follow" />
+    <title>Black Organization</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --gold: #d6af39;
+        --gold-soft: #f2d36a;
+        --ivory: #f5efe3;
+        --muted: #cfc6b4;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, rgba(214,175,57,.18), transparent 22%), var(--bg);
+        color: var(--ivory);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .box {
+        max-width: 720px;
+        text-align: center;
+        padding: 2rem 2.5rem;
+        border: 1px solid rgba(242,211,106,.35);
+        background: rgba(15,15,15,.94);
+        box-shadow: 0 0 30px rgba(214,175,57,.12);
+      }
+      .eyebrow {
+        font-size: .72rem;
+        letter-spacing: .22rem;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+      }
+      h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0.75rem 0 0.5rem; }
+      p { color: var(--muted); margin: 0; }
+      a { color: var(--gold-soft); text-decoration: none; font-weight: 700; }
+      a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="eyebrow">Black Organization</div>
+      <h1>Redirecting to the homepage...</h1>
+      <p>
+        If you are not redirected automatically, <a href="./public/index.html">click here</a>.
+      </p>
+    </div>
+    <script>
+      window.location.replace('./public/index.html');
+    </script>
+  </body>
+</html>

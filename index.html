@@ -2,71 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./blackorganization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=./" />
+    <meta name="robots" content="index, follow" />
     <title>Black Organization</title>
     <style>
       :root {
-        --black: #0a0904;
-        --gold: #c9a227;
-        --gold-light: #e8cc7c;
-        --ivory: #f3ede0;
+        --bg: #0a0a0a;
+        --gold: #d6af39;
+        --gold-soft: #f2d36a;
+        --ivory: #f5efe3;
+        --muted: #cfc6b4;
       }
-      html, body {
+      * { box-sizing: border-box; }
+      body {
         margin: 0;
-        min-height: 100%;
-        background: var(--black);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, rgba(214,175,57,.18), transparent 22%), var(--bg);
         color: var(--ivory);
         font-family: Arial, Helvetica, sans-serif;
       }
-      body {
-        display: grid;
-        place-items: center;
-        min-height: 100vh;
-      }
-      .redirect-box {
+      .box {
+        max-width: 720px;
         text-align: center;
-        padding: 32px 40px;
-        border: 1px solid rgba(232, 204, 124, 0.5);
-        background: rgba(20, 18, 16, 0.9);
-        box-shadow: 0 0 30px rgba(201, 162, 39, 0.15);
+        padding: 2rem 2.5rem;
+        border: 1px solid rgba(242,211,106,.35);
+        background: rgba(15,15,15,.94);
+        box-shadow: 0 0 30px rgba(214,175,57,.12);
       }
-      .brand {
-        color: var(--gold-light);
-        letter-spacing: 0.14em;
+      .eyebrow {
+        font-size: .72rem;
+        letter-spacing: .22rem;
         text-transform: uppercase;
-        font-size: 12px;
-        margin-bottom: 12px;
+        color: var(--gold-soft);
       }
-      h1 {
-        margin: 0 0 10px;
-        font-size: clamp(1.8rem, 3vw, 3rem);
-      }
-      a {
-        color: var(--gold-light);
-        text-decoration: none;
-        font-weight: 600;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      p {
-        margin: 0;
-        color: #d8d1c3;
-      }
+      h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0.75rem 0 0.5rem; }
+      p { color: var(--muted); margin: 0; }
+      a { color: var(--gold-soft); text-decoration: none; font-weight: 700; }
+      a:hover { text-decoration: underline; }
     </style>
   </head>
   <body>
-    <div class="redirect-box">
-      <div class="brand">Black Organization</div>
-      <h1>Loading homepage...</h1>
+    <div class="box">
+      <div class="eyebrow">Black Organization</div>
+      <h1>Redirecting to the homepage...</h1>
       <p>
-        If you are not redirected automatically,
-        <a href="./blackorganization.html">click here to open the main website</a>.
+        If you are not redirected automatically, <a href="/">click here</a>.
       </p>
     </div>
     <script>
-      window.location.replace('./blackorganization.html');
+      window.location.replace('/');
     </script>
   </body>
 </html>
