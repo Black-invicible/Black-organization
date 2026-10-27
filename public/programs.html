@@ -3,81 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | Black Organization</title>
-    <meta name="description" content="Learn about Black Organization and our mission to empower Black communities with leadership, education, entrepreneurship, and support." />
+    <title>Programs | Black Organization</title>
+    <meta name="description" content="Explore Black Organization programs designed to support leadership, entrepreneurship, education, community care, and Black economic growth." />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://blackorganization.org/about" />
-    <meta property="og:title" content="About | Black Organization" />
-    <meta property="og:description" content="Black Organization empowers Black communities through leadership, education, culture, and opportunity." />
-    <meta property="og:url" content="https://blackorganization.org/about" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="canonical" href="https://blackorganization.org/programs" />
+    <meta property="og:title" content="Programs | Black Organization" />
+    <meta property="og:description" content="Programs for leadership, entrepreneurship, education, and community growth." />
+    <meta property="og:url" content="https://blackorganization.org/programs" />
+    <style>
+      :root { --bg:#0d0c0b; --panel:#171512; --gold:#d6af39; --gold-soft:#f4d97d; --ivory:#f5efe5; --muted:#c6bba8; --line:rgba(255,255,255,0.1); }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family: Arial, Helvetica, sans-serif; background: linear-gradient(180deg, #0d0c0b 0%, #15120f 100%); color:var(--ivory); line-height:1.6; }
+      a { color: inherit; text-decoration:none; }
+      .wrap { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+      .topbar { position: sticky; top:0; z-index:10; background: rgba(13,12,11,.92); border-bottom:1px solid var(--line); }
+      .nav { display:flex; justify-content:space-between; align-items:center; min-height:72px; gap:20px; }
+      .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.06em; }
+      .brand-mark { width:34px; height:34px; border-radius:50%; display:grid; place-items:center; border:1px solid var(--gold); color:var(--gold-soft); }
+      .nav-links { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
+      .nav-links a { font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.8; }
+      .nav-links a:hover { opacity:1; }
+      .cta { display:inline-flex; align-items:center; justify-content:center; background:var(--gold); color:#130e09; padding:.8rem 1.2rem; border-radius:999px; font-weight:700; }
+      main { padding: 60px 0 40px; }
+      .hero { background: rgba(255,255,255,.02); border:1px solid var(--line); border-radius: 22px; padding: 30px 22px; }
+      .eyebrow { color:var(--gold-soft); letter-spacing:.2em; font-size:12px; text-transform:uppercase; }
+      h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 14px 0 18px; }
+      p { color: var(--muted); }
+      .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top:20px; }
+      .card { background: rgba(255,255,255,.02); border:1px solid var(--line); border-radius:16px; padding:20px; }
+      .card h3 { margin-top:0; }
+      footer { padding: 30px 0 60px; border-top:1px solid var(--line); color: var(--muted); }
+      .small-links { display:flex; flex-wrap:wrap; gap: 16px; margin-top: 16px; }
+      @media (max-width: 720px) { .nav { flex-direction: column; align-items:flex-start; padding:14px 0; } }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a class="brand" href="/">
-          <span class="brand-mark">B</span>
-          <span>Black Organization</span>
-        </a>
-        <nav class="main-nav" aria-label="Main navigation">
+    <header class="topbar">
+      <div class="wrap nav">
+        <a class="brand" href="/"><span class="brand-mark">B</span><span>Black Organization</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
           <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/programs">Programs</a>
           <a href="/contact">Contact</a>
           <a href="/register">Register</a>
         </nav>
-        <a class="button button-primary" href="/contact">Join the Movement</a>
+        <a class="cta" href="/register">Join</a>
       </div>
     </header>
-
-    <main>
-      <section class="hero section-dark">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">BUILDING A STRONGER FUTURE</p>
-            <h1>Black excellence, leadership, and opportunity for every generation.</h1>
-            <p class="lead">
-              We create pathways for education, civic engagement, business growth, and community care that uplift Black communities everywhere.
-            </p>
-          </div>
-        </div>
+    <main class="wrap">
+      <section class="hero">
+        <p class="eyebrow">Programs</p>
+        <h1>Support systems designed to uplift Black communities at every stage.</h1>
+        <p>Our programs focus on leadership, business development, education, advocacy, and community care so that members can grow, lead, and thrive.</p>
+      </section>
+      <section class="grid">
+        <article class="card"><h3>Leadership Development</h3><p>Build practical leadership skills for community impact, business growth, and positive social change.</p></article>
+        <article class="card"><h3>Entrepreneurship</h3><p>Support aspiring and existing founders with networks, visibility, and business opportunities.</p></article>
+        <article class="card"><h3>Education & Mentorship</h3><p>Encourage learning, access, discipline, and mentoring for youth and adults alike.</p></article>
+        <article class="card"><h3>Community Care</h3><p>Strengthen neighborhoods through outreach, support networks, and collective action.</p></article>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="/">
-            <span class="brand-mark">B</span>
-            <span>Black Organization</span>
-          </a>
-          <p>Building empowered communities through leadership, opportunity, and care.</p>
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/programs">Programs</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="mailto:hello@blackorganization.org">hello@blackorganization.org</a></li>
-            <li><a href="tel:+1234567890">(123) 456-7890</a></li>
-            <li>Atlanta, GA</li>
-          </ul>
-        </div>
-      </div>
-      <div class="container footer-bottom">
-        <p>© 2026 Black Organization. All rights reserved.</p>
+    <footer class="wrap">
+      <p>© 2026 Black Organization</p>
+      <div class="small-links">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/register">Register</a>
+        <a href="/black-fashion.html">Black Fashion</a>
+        <a href="/DSW.html">Designwurld</a>
       </div>
     </footer>
-
-    <script src="/script.js"></script>
   </body>
 </html>

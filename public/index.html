@@ -3,57 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=./public/index.html" />
-    <meta name="robots" content="index, follow" />
-    <title>Black Organization</title>
+    <title>Black Organization | Community Leadership, Business & Empowerment</title>
+    <meta name="description" content="Black Organization connects Black communities through leadership, education, business growth, entrepreneurship, culture, and opportunity." />
+    <meta name="keywords" content="Black Organization, Black leadership, Black community, Black empowerment, education, entrepreneurship, business development, culture, opportunities" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Black Organization" />
+    <meta name="theme-color" content="#0d0c0b" />
+    <link rel="canonical" href="https://blackorganization.org/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Black Organization | Community Leadership, Business & Empowerment" />
+    <meta property="og:description" content="Black Organization helps Black communities grow through leadership, education, entrepreneurship, and opportunity." />
+    <meta property="og:url" content="https://blackorganization.org/" />
+    <meta property="og:site_name" content="Black Organization" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Black Organization" />
+    <meta name="twitter:description" content="Empowering Black communities through leadership, education, entrepreneurship, and opportunity." />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Organization","name":"Black Organization","url":"https://blackorganization.org","description":"Black Organization empowers Black communities through leadership, education, entrepreneurship, culture, and opportunity.","foundingDate":"2026","areaServed":"Worldwide"}
+    </script>
     <style>
-      :root {
-        --bg: #0a0a0a;
-        --gold: #d6af39;
-        --gold-soft: #f2d36a;
-        --ivory: #f5efe3;
-        --muted: #cfc6b4;
-      }
+      :root { --bg:#0d0c0b; --panel:#171512; --panel-soft:#1f1a16; --gold:#d6af39; --gold-soft:#f4d97d; --ivory:#f5efe5; --muted:#c6bba8; --line:rgba(255,255,255,0.09); }
       * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: radial-gradient(circle at top, rgba(214,175,57,.18), transparent 22%), var(--bg);
-        color: var(--ivory);
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      .box {
-        max-width: 720px;
-        text-align: center;
-        padding: 2rem 2.5rem;
-        border: 1px solid rgba(242,211,106,.35);
-        background: rgba(15,15,15,.94);
-        box-shadow: 0 0 30px rgba(214,175,57,.12);
-      }
-      .eyebrow {
-        font-size: .72rem;
-        letter-spacing: .22rem;
-        text-transform: uppercase;
-        color: var(--gold-soft);
-      }
-      h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0.75rem 0 0.5rem; }
-      p { color: var(--muted); margin: 0; }
-      a { color: var(--gold-soft); text-decoration: none; font-weight: 700; }
-      a:hover { text-decoration: underline; }
+      html { scroll-behavior: smooth; }
+      body { margin:0; background: radial-gradient(circle at top, rgba(214,175,57,0.14), transparent 26%), linear-gradient(180deg, #0d0c0b 0%, #14110f 100%); color: var(--ivory); font-family: Arial, Helvetica, sans-serif; line-height: 1.6; }
+      a { color: inherit; text-decoration: none; }
+      .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      .topbar { position: sticky; top: 0; z-index: 20; background: rgba(13,12,11,0.9); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+      .nav { display: flex; justify-content: space-between; align-items: center; min-height: 72px; gap: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.06em; }
+      .brand-mark { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold-soft); font-weight: 700; }
+      .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+      .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; }
+      .nav-links a:hover { opacity: 1; }
+      .cta { display: inline-flex; align-items: center; justify-content: center; background: var(--gold); color: #140f0a; padding: 0.8rem 1.2rem; border-radius: 999px; font-weight: 700; }
+      .hero { padding: 90px 0 60px; }
+      .hero-shell { background: rgba(23,21,18,0.92); border: 1px solid rgba(214,175,57,0.3); border-radius: 28px; padding: 40px 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+      .eyebrow { color: var(--gold-soft); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+      h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; margin: 18px 0 16px; }
+      .lead { max-width: 760px; color: var(--muted); font-size: 1.12rem; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+      .secondary { border: 1px solid var(--line); background: rgba(255,255,255,0.02); color: var(--ivory); padding: 0.8rem 1.2rem; border-radius: 999px; font-weight: 700; }
+      .section { padding: 36px 0; }
+      .section-header { margin-bottom: 22px; }
+      h2 { font-size: clamp(1.8rem, 3vw, 2.9rem); margin: 0 0 12px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+      .card { background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 20px; padding: 22px; min-height: 200px; }
+      .card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+      .card p { margin: 0; color: var(--muted); }
+      .dir { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+      .dir a { display: block; background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+      footer { padding: 30px 0 60px; color: var(--muted); }
+      .footer-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; }
+      @media (max-width: 720px) { .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; } .nav-links { gap: 11px 16px; } }
     </style>
   </head>
   <body>
-    <div class="box">
-      <div class="eyebrow">Black Organization</div>
-      <h1>Redirecting to the homepage...</h1>
-      <p>
-        If you are not redirected automatically, <a href="./public/index.html">click here</a>.
-      </p>
-    </div>
-    <script>
-      window.location.replace('./public/index.html');
-    </script>
+    <header class="topbar">
+      <div class="wrap nav">
+        <a class="brand" href="/"><span class="brand-mark">B</span><span>Black Organization</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/programs">Programs</a>
+          <a href="/contact">Contact</a>
+          <a href="/register">Register</a>
+        </nav>
+        <a class="cta" href="/register">Join</a>
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="hero">
+        <div class="hero-shell">
+          <p class="eyebrow">Building leaders, businesses, and stronger communities</p>
+          <h1>Black excellence in leadership, culture, education, and opportunity.</h1>
+          <p class="lead">Black Organization brings together community leadership, entrepreneurial growth, education access, and cultural innovation to create lasting impact for Black communities worldwide.</p>
+          <div class="hero-actions">
+            <a class="cta" href="/register">Get involved</a>
+            <a class="secondary" href="/programs">Explore programs</a>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">
+          <p class="eyebrow">What we do</p>
+          <h2>Programs and opportunities built for impact.</h2>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Leadership</h3><p>Develop civic, business, and community leaders who create pathways for progress and change.</p></article>
+          <article class="card"><h3>Education</h3><p>Support learning, mentorship, and access to the tools needed to grow and thrive.</p></article>
+          <article class="card"><h3>Business</h3><p>Build entrepreneurial ecosystems that create ownership, jobs, and wealth across communities.</p></article>
+          <article class="card"><h3>Culture</h3><p>Highlight artistic, creative, and cultural expression through innovation and storytelling.</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">
+          <p class="eyebrow">Company directory</p>
+          <h2>Explore the Black Organization ecosystem.</h2>
+        </div>
+        <div class="dir">
+          <a href="/black-fashion.html">Black Fashion</a>
+          <a href="/black-academy.html">Black Academy</a>
+          <a href="/black-house.html">Black House</a>
+          <a href="/DSW.html">Designwurld</a>
+          <a href="/calculus.html">Calculus</a>
+          <a href="/dc.html">DC</a>
+          <a href="/coco-pillars.html">Coco Pillars</a>
+          <a href="/artcraftdesign%20(2).html">Artcraft Design</a>
+          <a href="/chat%20black.html">Chat Black</a>
+          <a href="/black-store.html">Black Store</a>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <p>© 2026 Black Organization. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/programs">Programs</a>
+        <a href="/contact">Contact</a>
+        <a href="/register">Register</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </footer>
   </body>
 </html>
